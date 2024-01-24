@@ -1,0 +1,36 @@
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 100vh; /* Adjust as needed */
+  gap: 130px;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.logo img {
+  width: 120px;
+  height: auto;
+  margin: 0;
+}
+
+.logo h1 {
+  font-size: 120px;
+  margin: 0;
+  background: linear-gradient(130deg, #fff4d7, #dadefb, #d8ffdc);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  font-weight: "800";
+  filter: drop-shadow(0px 3px 4px #a4b9ef);
+}
+
+.left-side p {
+  color: #fff;
+  font-size: 28px;
+  font-weight: 600;
+}
