@@ -1,6 +1,7 @@
 import React, { useEffect, useState, useRef } from "react";
 import "./LoginForm.css";
 import { PiWarningCircleBold } from "react-icons/pi";
+import { useNavigate } from "react-router-dom";
 
 const LoginForm = () => {
   const emailRef = useRef();
@@ -10,6 +11,8 @@ const LoginForm = () => {
   const [pwd, setPwd] = useState("");
   const [errMsg, setErrMsg] = useState("");
   const [success, setSuccess] = useState(false);
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     emailRef.current.focus();
@@ -43,7 +46,9 @@ e.preventDfault();
   */
   }
 
-  function handleSubmit() {}
+  const handleSubmit = () => {
+    navigate("/homepage");
+  };
 
   return (
     <div className="wrapper">
