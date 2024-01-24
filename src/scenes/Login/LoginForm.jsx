@@ -21,8 +21,24 @@ const LoginForm = () => {
 
   {
     /* 
-  const handleSubmit = (async = (e) => {
-    e.preventDefault();
+  const handleSubmit = async = (e) => {
+e.preventDfault();
+
+    try {
+  await signInWithEmailAndPassword(auth, email, password);
+  Successfully signed in
+} catch (error) {
+  if (error.code === 'auth/user-not-found' || error.code === 'auth/wrong-password') {
+    setErrMsg('Invalid Email or Password');
+  } else if (error.code === 'auth/invalid-email') {
+    setErrMsg('Invalid Email Address');
+  } else if (error.code === 'auth/too-many-requests') {
+    setErrMsg('Too Many Login Attempts. Try again later.');
+  } else {
+    setErrMsg('Login Failed. Please try again.');
+  }
+}
+
   }); 
   */
   }

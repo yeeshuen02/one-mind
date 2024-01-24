@@ -1,6 +1,6 @@
-import { scryRenderedComponentsWithType } from "react-dom/test-utils";
 import "./App.css";
-import LoginContainer from "./components/LoginForm/LoginContainer";
+import LoginContainer from "./scenes/Login/LoginContainer";
+import Homepage from "./scenes/Homepage/Homepage";
 
 function App() {
   return (

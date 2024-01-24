@@ -28,7 +28,7 @@
   border-radius: 20px;
   font-size: 16px;
   color: rgba(34, 34, 34, 0.5);
-  padding: 20px 20px 20px 20px;
+  padding: 20px;
 }
 
 .input-box input::placeholder {
@@ -72,8 +72,8 @@
   width: 157px;
   height: 5px;
   border-radius: 10px;
-  background-color: #0f67fe; /* Change this color to match your design */
-  margin: 15px auto; /* Adjust the margin as needed */
+  background-color: #0f67fe;
+  margin: 15px auto;
 }
 
 .wrapper .errmsg {
@@ -100,8 +100,12 @@
   padding: 3px 25px 3px;
 }
 
+.offscreen {
+  position: absolute;
+  left: -9999px;
+}
+
 @media screen and (max-width: 1194px) {
-  /* Styles to apply when the screen width is 768 pixels or less */
   .wrapper {
     width: 100%;
     padding: 30px 15px 80px 15px;
@@ -110,6 +114,4 @@
   .wrapper h1 {
     font-size: 32px;
   }
-
-  /* Adjust other styles as needed for smaller screens */
 }
