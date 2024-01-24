@@ -2,7 +2,7 @@
   width: 450px;
   background: rgba(255, 255, 255, 0.45);
   color: #fff;
-  padding: 50px 30px 150px 30px;
+  padding: 50px 30px 100px 30px;
   border-radius: 15px;
 }
 
@@ -40,7 +40,7 @@
   justify-content: flex-end;
   font-size: 13px;
   font-weight: 700;
-  margin: -20px 0 30px;
+  margin: -20px 0 10px;
 }
 
 .forgot a {
@@ -64,6 +64,7 @@
   font-weight: 700;
   border-radius: 18px;
   color: #fff;
+  margin-top: 50px;
 }
 
 .wrapper hr.line {
@@ -73,4 +74,42 @@
   border-radius: 10px;
   background-color: #0f67fe; /* Change this color to match your design */
   margin: 15px auto; /* Adjust the margin as needed */
+}
+
+.wrapper .errmsg {
+  position: relative;
+  width: 100%;
+  height: 30px;
+}
+
+.errmsg .icon {
+  color: #ff0000;
+  position: absolute;
+  left: 5px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.errmsg p {
+  color: #ff0000;
+  font-size: 15;
+  font-weight: 400;
+  border: 1px solid #ff0000;
+  border-radius: 3px;
+  background-color: #fff5f4;
+  padding: 3px 25px 3px;
+}
+
+@media screen and (max-width: 1194px) {
+  /* Styles to apply when the screen width is 768 pixels or less */
+  .wrapper {
+    width: 100%;
+    padding: 30px 15px 80px 15px;
+  }
+
+  .wrapper h1 {
+    font-size: 32px;
+  }
+
+  /* Adjust other styles as needed for smaller screens */
 }

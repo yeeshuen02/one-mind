@@ -1,5 +1,6 @@
 import React, { useEffect, useState, useRef } from "react";
 import "./LoginForm.css";
+import { PiWarningCircleBold } from "react-icons/pi";
 
 const LoginForm = () => {
   const emailRef = useRef();
@@ -17,6 +18,14 @@ const LoginForm = () => {
   useEffect(() => {
     setErrMsg("");
   }, [email, pwd]);
+
+  {
+    /* 
+  const handleSubmit = (async = (e) => {
+    e.preventDefault();
+  }); 
+  */
+  }
 
   function handleSubmit() {}
 
@@ -51,6 +60,14 @@ const LoginForm = () => {
 
         <div className="forgot">
           <a href="#">Forgot Password?</a>
+        </div>
+
+        {/* error message */}
+        {/* <p ref={errRef} className={errMsg ? "errmsg" : "offscreen"} aria-live="assertive">{errMsg}</p> */}
+
+        <div className="errmsg">
+          <PiWarningCircleBold className="icon" />
+          <p>Incorrect Email or Password</p>
         </div>
 
         <button type="submit">LOGIN</button>
