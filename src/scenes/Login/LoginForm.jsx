@@ -2,6 +2,8 @@ import React, { useEffect, useState, useRef } from "react";
 import "./LoginForm.css";
 import { PiWarningCircleBold } from "react-icons/pi";
 import { useNavigate } from "react-router-dom";
+import { signInWithEmailAndPassword } from "firebase/auth";
+import { database } from "../../config/firebase";
 
 const LoginForm = () => {
   const emailRef = useRef();
@@ -10,7 +12,6 @@ const LoginForm = () => {
   const [email, setEmail] = useState("");
   const [pwd, setPwd] = useState("");
   const [errMsg, setErrMsg] = useState("");
-  const [success, setSuccess] = useState(false);
 
   const navigate = useNavigate();
 
@@ -22,32 +23,27 @@ const LoginForm = () => {
     setErrMsg("");
   }, [email, pwd]);
 
-  {
-    /* 
-  const handleSubmit = async = (e) => {
-e.preventDfault();
+  const handleSubmit = async (e) => {
+    e.preventDefault();
 
     try {
-  await signInWithEmailAndPassword(auth, email, password);
-  Successfully signed in
-} catch (error) {
-  if (error.code === 'auth/user-not-found' || error.code === 'auth/wrong-password') {
-    setErrMsg('Invalid Email or Password');
-  } else if (error.code === 'auth/invalid-email') {
-    setErrMsg('Invalid Email Address');
-  } else if (error.code === 'auth/too-many-requests') {
-    setErrMsg('Too Many Login Attempts. Try again later.');
-  } else {
-    setErrMsg('Login Failed. Please try again.');
-  }
-}
-
-  }); 
-  */
-  }
-
-  const handleSubmit = () => {
-    navigate("/homepage");
+      const data = await signInWithEmailAndPassword(database, email, pwd);
+      console.log(data, "authData");
+      navigate("/homepage");
+    } catch (error) {
+      if (
+        error.code === "auth/user-not-found" ||
+        error.code === "auth/wrong-password"
+      ) {
+        setErrMsg("Invalid Email or Password");
+      } else if (error.code === "auth/invalid-email") {
+        setErrMsg("Invalid Email Address");
+      } else if (error.code === "auth/too-many-requests") {
+        setErrMsg("Too Many Login Attempts. Try again later.");
+      } else {
+        setErrMsg("Login Failed. Please try again.");
+      }
+    }
   };
 
   return (
@@ -83,12 +79,13 @@ e.preventDfault();
           <a href="#">Forgot Password?</a>
         </div>
 
-        {/* error message */}
-        {/* <p ref={errRef} className={errMsg ? "errmsg" : "offscreen"} aria-live="assertive">{errMsg}</p> */}
-
-        <div className="errmsg">
+        <div
+          ref={errRef}
+          className={errMsg ? "errmsg" : "offscreen"}
+          aria-live="assertive"
+        >
           <PiWarningCircleBold className="icon" />
-          <p>Incorrect Email or Password</p>
+          <p>{errMsg}</p>
         </div>
 
         <button type="submit">LOGIN</button>
