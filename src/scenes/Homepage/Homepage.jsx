@@ -13,7 +13,7 @@ import inReviewIcon from "../../assets/in-review.png";
 import diagnosedIcon from "../../assets/diagnosed.png";
 import totalIcon from "../../assets/total.png";
 import searchRightIcon from "../../assets/search.png";
-
+import Datatable from '../Datatable/Datatable';
 
 
 
@@ -70,12 +70,6 @@ const Homepage = () => {
           </div>
       </div>
     </div>
-
-
-
-
-
-
 
     <div className='bottom-content'>
         <div className='filter-bar'>
@@ -225,87 +219,7 @@ const Homepage = () => {
                   </div>
                 </div>
             </div>
-            <div className='patient-table'>
-              <div className='patient-table-header'>
-                <p>Patient List</p>
-                <button>+ Add Patient</button>
-              </div>
-
-
-
-
-              <table className='table-field'>
-                <tr>
-                  {[
-                    "Patient Id",
-                    "Name",
-                    "Age",
-                    "Gender",
-                    "Date",
-                    "PHQ9-Score",
-                    "Status",
-                  ].map((thLabel)=>(
-                    <th>{thLabel}</th>
-                  ))}
-                </tr>
-
-                <tr>
-                  {[
-                    "P1929",
-                    "Yong Wing Soon",
-                    "24",
-                    "Male",
-                    "19/2/2010",
-                    "11",
-                    "Diagnosed",
-                  ].map((thLabel)=>(
-                    <td>{thLabel}</td>
-                  ))}
-                </tr>
-
-                <tr>
-                  {[
-                    "P1929",
-                    "Yong Wing Soon",
-                    "24",
-                    "Male",
-                    "19/2/2010",
-                    "11",
-                    "Diagnosed",
-                  ].map((thLabel)=>(
-                    <td>{thLabel}</td>
-                  ))}
-                </tr>
-
-                <tr>
-                  {[
-                    "P1929",
-                    "Yong Wing Soon",
-                    "24",
-                    "Male",
-                    "19/2/2010",
-                    "11",
-                    "Diagnosed",
-                  ].map((thLabel)=>(
-                    <td>{thLabel}</td>
-                  ))}
-                </tr>
-
-                <tr>
-                  {[
-                    "P1929",
-                    "Yong Wing Soon",
-                    "24",
-                    "Male",
-                    "19/2/2010",
-                    "11",
-                    "Diagnosed",
-                  ].map((thLabel)=>(
-                    <td>{thLabel}</td>
-                  ))}
-                </tr>
-
-              </table>
+            <Datatable/>
 
               <div className='home-page-navigation'>
                 <button>Previous</button>
@@ -313,7 +227,6 @@ const Homepage = () => {
             </div>
         </div>
       </div>
-    </div>
  ); 
 };
 export default Homepage;

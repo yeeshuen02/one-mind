@@ -10,7 +10,7 @@ const LoginContainer = () => {
         <div className="left-side">
           <div className="logo">
             <img src={logoImage} alt="One Mind Logo"></img>
-            <h1>neMind</h1>
+            <h1>OneMind</h1>
           </div>
           <p>Revolutionising Wellbeing with EEG Technology</p>
         </div>

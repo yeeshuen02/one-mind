@@ -3,7 +3,7 @@ import "./LoginForm.css";
 import { PiWarningCircleBold } from "react-icons/pi";
 import { useNavigate } from "react-router-dom";
 import { signInWithEmailAndPassword } from "firebase/auth";
-import { database } from "../../config/firebase";
+import { auth } from "../../config/firebase";
 
 const LoginForm = () => {
   const emailRef = useRef();
@@ -27,7 +27,7 @@ const LoginForm = () => {
     e.preventDefault();
 
     try {
-      const data = await signInWithEmailAndPassword(database, email, pwd);
+      const data = await signInWithEmailAndPassword(auth, email, pwd);
       console.log(data, "authData");
       navigate("/homepage");
     } catch (error) {
