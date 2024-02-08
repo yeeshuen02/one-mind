@@ -15,7 +15,13 @@ import totalIcon from "../../assets/total.png";
 import searchRightIcon from "../../assets/search.png";
 import Datatable from "../Datatable/Datatable";
 import { db } from "../../config/firebase";
-import { collection, query, where, getDocs } from "firebase/firestore";
+import {
+  collection,
+  query,
+  where,
+  getDocs,
+  Timestamp,
+} from "firebase/firestore";
 
 import "./HomePage.css";
 
@@ -39,18 +45,34 @@ const Homepage = () => {
     setSelectedOption2(event.target.value);
   };
 
-
   //the statistics
-  const [totalAmount, setTotalAmount] = useState(null)
-  const [totalPerc, setforTotalPerc] = useState(null)
+  const [totalAmount, setTotalAmount] = useState(null);
+  const [totalPerc, setforTotalPerc] = useState(null);
+  const [inReviewAmount, setInReviewAmount] = useState(null);
+  const [diagnosedAmount, setDiagnosedAmount] = useState(null);
 
   useEffect(() => {
     const fetchData = async () => {
-      const patientListQuery = query(collection(db,"PatientList"));
+      //In Review Amount
+      const reviewListQuery = query(
+        collection(db, "PatientList"),
+        where("Status", "==", "In Review")
+      );
+      const reviewListData = await getDocs(reviewListQuery);
+      setInReviewAmount(reviewListData.docs.length);
 
+      //Diagnosed Amount
+      const diagnosedListQuery = query(
+        collection(db, "PatientList"),
+        where("Status", "==", "Diagnosed")
+      );
+      const diagnosedListData = await getDocs(diagnosedListQuery);
+      setDiagnosedAmount(diagnosedListData.docs.length);
+
+      //Total Amount
+      const patientListQuery = query(collection(db, "PatientList"));
       const patientListData = await getDocs(patientListQuery);
-
-      setTotalAmount(patientListData.docs.length)
+      setTotalAmount(patientListData.docs.length);
 
       //for percentage
       const today = new Date();
@@ -59,20 +81,24 @@ const Homepage = () => {
 
       const lastWeekQuery = query(
         collection(db, "PatientList"),
-        where("timeStamp", "<=", today),
-        where("timeStamp", ">", lastWeek)
+        where("Date", "<=", today),
+        where("Date", ">", lastWeek)
       );
 
       const prevWeekQuery = query(
         collection(db, "PatientList"),
-        where("timeStamp", "<=", lastWeek),
-        where("timeStamp", ">", prevWeek)
+        where("Date", "<=", lastWeek),
+        where("Date", ">", prevWeek)
       );
 
-      const lastWeekData = await getDocs(lastWeekQuery)
-      const prevWeekData = await getDocs(prevWeekQuery)
-      
-      setforTotalPerc(((lastWeekData.docs.length - prevWeekData.docs.length) / prevWeekData.docs.length) * 100)
+      const lastWeekData = await getDocs(lastWeekQuery);
+      const prevWeekData = await getDocs(prevWeekQuery);
+
+      setforTotalPerc(
+        ((lastWeekData.docs.length - prevWeekData.docs.length) /
+          prevWeekData.docs.length) *
+          100
+      );
     };
 
     fetchData();
@@ -134,7 +160,7 @@ const Homepage = () => {
               <img src={dateIcon} alt="search Logo" />
               <p>Date</p>
             </div>
-            <input type="text" placeholder="Select a date" />
+            <input type="date" placeholder="Select a date" />
           </div>
 
           <div className="gender-block">
@@ -212,7 +238,7 @@ const Homepage = () => {
                 <p>In Review</p>
               </div>
               <div className="in-review-description">
-                <p> {totalAmount} </p>
+                <p> {inReviewAmount} </p>
               </div>
             </div>
             <div className="diagnosed">
@@ -221,7 +247,7 @@ const Homepage = () => {
                 <p>Diagnosed</p>
               </div>
               <div className="in-review-description">
-                <p> {totalPerc} </p>
+                <p> {diagnosedAmount} </p>
               </div>
             </div>
             <div className="total">

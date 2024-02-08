@@ -9,7 +9,7 @@ import AddPatient from "../AddPatients/AddPatient";
 
 const Datatable = () => {
     const [data, setData] = useState([]);
-  
+
     useEffect(() => {
         //Listen to realtime data
         const unsub = onSnapshot(collection(db, "PatientList"), (snapShot) => {
@@ -41,8 +41,12 @@ const Datatable = () => {
             className="datagrid"
             rows={data}
             columns={listColumns}
-            pageSize={2}
-            rowsPerPageOptions={[8]}
+            initialState={{
+              ...data.initialState,
+              pagination: { paginationModel: { pageSize: 8 } },
+            }}
+              pageSizeOptions={[0,8]}
+  
             checkboxSelection
           />
         </div>
