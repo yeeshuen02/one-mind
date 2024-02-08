@@ -29,9 +29,13 @@ const AddPatient = () => {
     const [patientID, setPatientID] = useState('');
     const [name,setName] = useState ('');
     const [age,setAge] = useState ('');
+    const [dob,setDob] = useState ('');
+    const [phone,setPhone] = useState ('');
     const [gender,setGender] = useState ('');
     const [score,setScore] = useState ('');
+    const [occupation,setOccupation] = useState ('');
     const [status,setStatus] = useState ('');
+    const timeStamp = serverTimestamp();
 
     const handleAdd = async (e) => {
         e.preventDefault();
@@ -40,9 +44,11 @@ const AddPatient = () => {
                 PatientID: patientID,
                 Name: name,
                 Age: age,
+                DOB: dob,
                 Gender: gender,
-                Date: serverTimestamp(),
-                Score: score,
+                Occupation: occupation,
+                Phone: phone,
+                Date: timeStamp, //work on this
                 Status: status,
               });
             
@@ -92,6 +98,26 @@ const AddPatient = () => {
 
                 <div>
                 <input
+                    type="date"
+                    placeholder="Date of Birth"
+                    onChange={(e) => setDob(e.target.value)}
+                    value={dob}
+                    required
+                />
+                </div>
+
+                <div>
+                <input
+                    type="number"
+                    placeholder="Phone Number"
+                    onChange={(e) => setPhone(e.target.value)}
+                    value={phone}
+                    required
+                />
+                </div>
+
+                <div>
+                <input
                     type="text"
                     placeholder="Gender"
                     onChange={(e) => setGender(e.target.value)}
@@ -102,10 +128,10 @@ const AddPatient = () => {
 
                 <div>
                 <input
-                    type="number"
-                    placeholder="Score"
-                    onChange={(e) => setScore(e.target.value)}
-                    value={score}
+                    type="text"
+                    placeholder="Occupation"
+                    onChange={(e) => setOccupation(e.target.value)}
+                    value={occupation}
                     required
                 />
                 </div>
