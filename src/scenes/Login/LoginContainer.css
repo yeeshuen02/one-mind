@@ -2,19 +2,21 @@
   overflow: hidden;
 }
 
-.login-page{
+.login-page {
   background: url("../../assets/background.png") no-repeat;
   background-size: cover;
   background-position: center;
   min-height: 100vh;
   justify-content: center;
   display: flex;
-} 
+}
 
 .container {
   display: flex;
   align-items: center;
   height: 100vh; /* Adjust as needed */
+  justify-content: space-between;
+  height: 100vh;
   gap: 130px;
 }
 
