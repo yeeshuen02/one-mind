@@ -1,0 +1,29 @@
+.hero {
+  background: url("../../assets/herobg.png") no-repeat;
+  background-size: cover;
+  background-position: center;
+  background-color: #f2f5f9;
+}
+
+.hero-content {
+  width: 750px;
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+  justify-content: center;
+  padding: 50px 7% 150px;
+  flex-wrap: wrap;
+}
+
+.hero-content h1 {
+  font-size: 80px;
+  font-weight: 800;
+  color: #242e49;
+  line-height: 1;
+}
+
+.hero-content p {
+  padding-top: 20px;
+  font-size: 1.5em;
+  color: #5d6a85;
+}
