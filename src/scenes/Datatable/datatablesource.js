@@ -1,5 +1,5 @@
 export const listColumns = [
-    { field: "Document", 
+    { field: "PatientID", 
       headerName: "Patient ID", 
       width: 70 
     },

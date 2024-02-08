@@ -1,14 +1,35 @@
 .datatable {
     height: 400px;
-    padding: 20px;
+    width: 1080px;
+    margin-top: 40px;
+    margin-left: 0px;
     
     .datatableTitle{
-      width: 60%;
-      font-size: 24px;
+      width: 100%;
+      font-size: 30px;
       color: gray;
       margin-bottom: 10px;
       display: flex;
       align-items: center;
       justify-content: space-between;
+
+      .addpatient{
+        text-decoration: none;
+        align-items: center;
+        
+        font-size: 20px;
+        font-weight: bold;
+        background-color: #0F67FE;
+        border-width: 0px;
+        border-radius: 15px;
+        color: white;
+        padding: 15px 25px 15px 25px;
+        width: 190px;
+        cursor: pointer;
+        margin-left: auto;
+  
+      }
     }
+
+   
 }  

@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { collection, getDocs, doc, onSnapshot } from "firebase/firestore";
 import { db } from "../../config/firebase";
+import AddPatient from "../AddPatients/AddPatient";
 
 const Datatable = () => {
     const [data, setData] = useState([]);
@@ -32,7 +33,7 @@ const Datatable = () => {
         <div className="datatable">
           <div className="datatableTitle">
             Patient List
-            <Link to="/AddPatient" className="link">
+            <Link to="/addpatient" className="addpatient">
               + Add Patient
             </Link>
           </div>
@@ -40,8 +41,8 @@ const Datatable = () => {
             className="datagrid"
             rows={data}
             columns={listColumns}
-            pageSize={9}
-            rowsPerPageOptions={[9]}
+            pageSize={2}
+            rowsPerPageOptions={[8]}
             checkboxSelection
           />
         </div>

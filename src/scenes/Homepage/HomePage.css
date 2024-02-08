@@ -59,7 +59,7 @@
     box-sizing: border-box;
     border-radius: 30px;
     gap: 25px;
-    flex: 20%;
+    flex: 30%;
     flex-direction: column;
     justify-content: space-between;
 }
@@ -108,7 +108,7 @@
 }
 
 .home-main-content{
-    flex: 80%;
+    flex: 70%;
     border-radius: 20px;
 }
 
@@ -126,7 +126,7 @@
 
 .in-review, .diagnosed, .total{
     background-color: #F2F5F9;
-    width:500px;
+    width:400px;
     border-radius: 30px;
     height: 200px;
     justify-content: space-between;

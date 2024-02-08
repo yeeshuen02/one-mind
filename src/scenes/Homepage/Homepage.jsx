@@ -236,9 +236,9 @@ const Homepage = () => {
           </div>
           <Datatable />
 
-          <div className="home-page-navigation">
+          {/* <div className="home-page-navigation">
             <button>Previous</button>
-          </div>
+          </div> */}
         </div>
       </div>
     </div>
