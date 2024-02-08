@@ -1,6 +1,20 @@
+#LoginContainer {
+  overflow: hidden;
+}
+
+.login-page {
+  background: url("../../assets/background.png") no-repeat;
+  background-size: cover;
+  background-position: center;
+  min-height: 100vh;
+  justify-content: center;
+  display: flex;
+}
+
 .container {
   display: flex;
   align-items: center;
+  height: 100vh; /* Adjust as needed */
   justify-content: space-between;
   height: 100vh;
   gap: 130px;
@@ -13,13 +27,13 @@
 }
 
 .logo img {
-  width: 120px;
+  width: 8.34vw;
   height: auto;
   margin: 0;
 }
 
 .logo h1 {
-  font-size: 120px;
+  font-size: 8.34vw;
   margin: 0;
   background: linear-gradient(130deg, #fff4d7, #dadefb, #d8ffdc);
   -webkit-background-clip: text;
@@ -29,8 +43,15 @@
   filter: drop-shadow(0px 3px 4px #a4b9ef);
 }
 
+.left-side {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.5vh;
+}
+
 .left-side p {
   color: #fff;
-  font-size: 28px;
+  font-size: 1.94vw;
   font-weight: 600;
 }

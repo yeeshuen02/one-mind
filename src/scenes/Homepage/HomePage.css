@@ -1,0 +1,298 @@
+.top-nav{
+    display: flex;
+    justify-content: space-between;
+}
+
+
+.homepage-home-button{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+}
+
+
+
+.homepage-home-button {
+    margin-left: 55px;
+    align-items: center;
+    padding: 20px;
+    color: #5B75FE;
+    font-weight: bold;
+    font-size: 30px;
+    border: 0cm;
+    background-color: transparent;
+    display: flex;
+}
+
+.homepage-right-side{
+    display: flex;
+    margin-right: 30px;
+    margin-top: 25px;
+    gap: 30px;
+}
+
+.homepage-right-side img{
+    width: 80px;
+    height: 80px;
+
+}
+
+
+
+.bottom-content{
+    margin: 30px;
+    display: flex;
+    gap: 50px;
+    margin-left: 60px;
+}
+
+.filter-bar{
+    display: flex;
+    justify-content: flex-start;
+    width: 200px; 
+    height: 100%;
+    background-color: #5B75FE;
+    margin-left: 5px;
+    padding: 20px;
+    padding-top: 50px;
+    box-sizing: border-box;
+    border-radius: 30px;
+    gap: 25px;
+    flex: 30%;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.filter-bar img{
+    height: 25px;
+    width: 25px;    
+}
+
+.filter-bar input, #dropdown{
+    background-color: #7D92FF;
+    height: 45px;
+    border-radius: 5px;
+    border-color: transparent;
+    width: 100%;
+    justify-self: center;
+    color: white;
+    padding-left: 20px;
+}
+
+.filter-bar ::placeholder {
+    color: white;
+}
+
+.name-search, .age-search, .date-search, .gender-search, .PHQ9-search, .status-search{
+    font-size: 20px;
+    font-weight: 10px;
+    color: white;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-left: 10px;
+    padding-bottom: 30px;
+}
+
+
+
+.name-block, .age-block, .date-block, .gender-block, .PHQ9-block, .status-block{
+    border-bottom: 2px solid #7D92FF; /* Border color is black (#000), adjust as needed */
+    padding: 15px;
+
+
+}
+#gender-label{
+    color: white;
+}
+
+.home-main-content{
+    flex: 70%;
+    border-radius: 20px;
+}
+
+.diagnosis-details{
+    display: flex;
+    gap: 30px;
+    margin-right: 24px;
+}
+
+.diagnosis-details img{
+    height: 120px;
+    width: 120px;
+    margin: 10px 20px 0px 30px;
+}
+
+.in-review, .diagnosed, .total{
+    background-color: #F2F5F9;
+    width:400px;
+    border-radius: 30px;
+    height: 200px;
+    justify-content: space-between;
+    padding: 10px;
+    padding-bottom: 220px;
+}
+
+.in-review-header{
+    display: flex;
+    align-items: center; 
+    font-size: 28px;
+    text-align: center;
+    margin-bottom: 15px;
+
+}
+
+.in-review-description{
+    font-size: 40px;
+    font-weight: bold;
+    text-align: center;
+}
+
+.patient-table{
+    margin: 20px 20px 0px 0px;
+    background-color: #F2F5F9;
+    border-radius: 30px;
+    height: 77%;
+
+}
+
+.patient-table-header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-left: 25px;
+}
+
+.patient-table-header p{
+    font-size: 30px;
+    font-weight: 900;
+    margin-top: 25px;
+    margin-left: 25px;
+}
+
+.patient-table-header button{
+    font-size: 20px;
+    font-weight: bold;
+    margin-top: 25px;
+    margin-right: 25px;
+    background-color: #0F67FE;
+    border-width: 0px;
+    border-radius: 15px;
+    color: white;
+    padding: 15px 25px 15px 25px;
+    width: 200px;
+}
+
+.gender-radio {
+    display: block;
+    position: relative;
+    padding-left: 35px;
+    margin-bottom: 12px;
+    cursor: pointer;
+    font-size: 22px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    border-width: 10px;
+    color: white;
+    font-size: 15px;
+    margin-left: 20px;
+  }
+  
+  /* Hide the browser's default radio button */
+  .gender-radio input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+  }
+  
+  /* Create a custom radio button */
+  .checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 25px;
+    width: 25px;
+    border-radius: 15%;
+    width: 20px;
+    height: 20px;
+    background-color: white;
+  }
+  
+  /* On mouse-over, add a grey background color */
+  .gender-radio:hover input ~ .checkmark {
+    background-color: #ccc;
+  }
+  
+  /* When the radio button is checked, add a blue background */
+  .gender-radio input:checked ~ .checkmark {
+    background-color: #2196F3;
+  }
+  
+  /* Create the indicator (the dot/circle - hidden when not checked) */
+  .gender-radio:after {
+    content: "";
+    position: absolute;
+    display: none;
+  }
+  
+  /* Show the indicator (dot/circle) when checked */
+  .gender-radio input:checked ~ .checkmark:after {
+    display: block;
+  }
+  
+  /* Style the indicator (dot/circle) */
+  .gender-radio .checkmark:after {
+       top: 9px;
+      left: 9px;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: white;
+  }
+
+
+  table{
+    margin-top: 20px;
+    border: none;
+    padding: 20px;   
+    border-color: white;
+  }
+  .table-field th{
+    font-size: 20px;
+    font-weight: 900;
+    width: 180px; /* Set the width of each cell */
+    height: 50px; /* Set the height of each cell */
+    padding: 10px; /* Add padding for better visual appearance */
+    border: none;
+    border-color: white;
+
+  }
+
+
+  th:nth-child(2) {
+    width: 300px; 
+  }
+  
+
+
+  .table-field td{
+    padding: 10px 50px 10px 70px; /* Add padding for better visual appearance */
+    background-color: white;
+    border-radius: 10px;
+    border: 10px solid white;
+
+  }
+
+  .home-page-navigation{
+    background-color: white;
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    margin-right: 100px; 
+    margin-bottom: 50px;
+    border-radius: 10px;
+    border: 1px solid #A3A3A3;
+  }
