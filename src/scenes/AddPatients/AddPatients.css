@@ -1,3 +1,4 @@
+/* hero section */
 .hero {
   background: url("../../assets/herobg.png") no-repeat;
   background-size: cover;
@@ -26,4 +27,180 @@
   padding-top: 20px;
   font-size: 1.5em;
   color: #5d6a85;
+}
+
+.information-container {
+  padding: 100px 7%;
+  display: flex;
+  flex-direction: column;
+  gap: 100px;
+}
+
+.nav-buttons {
+  display: flex;
+  margin: 20px 7% 10px 7%;
+  gap: 500px;
+  justify-content: center;
+}
+
+.circle-out-active {
+  background-color: #d1d8ff;
+  border-radius: 50%;
+  width: 68px;
+  height: 68px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  filter: drop-shadow(0 0 0.5em #99b3ff);
+}
+
+.circle-out-inactive {
+  background-color: #f1f1f1;
+  border-radius: 50%;
+  width: 68px;
+  height: 68px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  filter: drop-shadow(0 0 0.5em #1e1e1e26);
+}
+
+.circle-out-active span {
+  font-weight: bold;
+  font-size: 30px;
+  color: #fff;
+  font-family: inherit;
+  background: linear-gradient(120deg, #a4beff, #647eff);
+  border-radius: 50%;
+  width: 55px;
+  height: 55px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.circle-out-inactive span {
+  font-weight: bold;
+  font-size: 30px;
+  color: #d9d9d9;
+  font-family: inherit;
+  background: #f4f4f4;
+  border-radius: 50%;
+  width: 55px;
+  height: 55px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.progress-indicator {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 120px;
+}
+
+.progress-element-active {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+.progress-element-inactive {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+.progress-element-active p {
+  font-weight: bold;
+  color: #777777;
+}
+
+.progress-element-inactive p {
+  font-weight: bold;
+  color: #d9d9d9;
+}
+
+.patient-form {
+  background-color: #f5f7ff;
+  padding: 50px;
+  border-radius: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  justify-content: center;
+}
+
+.form-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(90px, 260px));
+  grid-gap: 20px;
+  list-style-type: none;
+}
+
+.input-container {
+  width: 260px;
+  position: relative;
+}
+
+.patient-form input {
+  width: 260px;
+  height: 100%;
+  background: #fdfdff;
+  border: none;
+  outline: none;
+  border-radius: 15px;
+  font-size: 20px;
+  font-weight: 700;
+  color: #242e49;
+  padding: 35px 20px 15px;
+}
+
+/* .short-input {
+  width: 260px;
+}
+
+.long-input {
+  width: 260px;
+} */
+
+.placeholder {
+  position: absolute;
+  top: 10px;
+  left: 13px;
+  padding: 0px 5px;
+  transition: 0.3s;
+  pointer-events: none;
+  color: #92a0c6;
+  font-weight: 700;
+}
+
+.proceed {
+  width: 250px;
+  height: 50px;
+  background: #0f67fe;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  font-size: 20px;
+  font-weight: 700;
+  border-radius: 10px;
+  color: #fff;
+}
+
+.back {
+  width: 250px;
+  height: 50px;
+  background: #d9d9d9;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  font-size: 20px;
+  font-weight: 700;
+  border-radius: 10px;
+  color: #fff;
 }

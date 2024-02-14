@@ -4,6 +4,7 @@ import Homepage from "./scenes/Homepage/Homepage";
 import { Routes, Route } from "react-router-dom";
 import LandingPage from "./scenes/Landing/LandingPage";
 import AddPatient from "./scenes/AddPatients/AddPatient";
+import ConsentForm from "./scenes/ConsentForm/ConsentForm";
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
       <Route path="/login" element={<LoginContainer />} />
       <Route path="/homepage" element={<Homepage />} />
       <Route path="/addpatient" element={<AddPatient />} />
+      <Route path="/consent" element={<ConsentForm />} />
     </Routes>
   );
 }

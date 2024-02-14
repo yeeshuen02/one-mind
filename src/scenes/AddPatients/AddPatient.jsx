@@ -76,11 +76,89 @@ const AddPatient = () => {
         </div>
       </div>
 
-      <div>
-        <form onSubmit={handleAdd}>
-          <h1>Add Patient</h1>
+      <div className="information-container">
+        <div className="progress-indicator">
+          <div className="progress-element-active">
+            <div className="circle-out-active">
+              <span>1</span>
+            </div>
+            <p>Patient Information</p>
+          </div>
 
-          <div>
+          <div className="progress-element-inactive">
+            <div className="circle-out-inactive">
+              <span>2</span>
+            </div>
+            <p>Consent Form</p>
+          </div>
+
+          <div className="progress-element-inactive">
+            <div className="circle-out-inactive">
+              <span>3</span>
+            </div>
+            <p>Questionnaire</p>
+          </div>
+
+          <div className="progress-element-inactive">
+            <div className="circle-out-inactive">
+              <span>4</span>
+            </div>
+            <p>Upload EEG Recording</p>
+          </div>
+        </div>
+
+        <form className="patient-form" onSubmit={handleAdd}>
+          <div className="form-container">
+            <div className="input-container">
+              <input
+                type="text"
+                onChange={(e) => setName(e.target.value)}
+                value={name}
+                className="long-input"
+                required
+              />
+              <label className="placeholder">Name</label>
+            </div>
+
+            <div className="input-container">
+              <input type="text" className="long-input" required />
+              <label className="placeholder">Date of Birth</label>
+            </div>
+
+            <div className="input-container">
+              <label className="placeholder">Age</label>
+              <input
+                type="number"
+                onChange={(e) => setAge(e.target.value)}
+                value={age}
+                className="short-input"
+                required
+              />
+            </div>
+
+            <div className="input-container">
+              <label className="placeholder">Gender</label>
+              <input
+                type="text"
+                onChange={(e) => setGender(e.target.value)}
+                value={gender}
+                className="short-input"
+                required
+              />
+            </div>
+
+            <div className="input-container">
+              <label className="placeholder">Occupation</label>
+              <input type="text" className="long-input" />
+            </div>
+
+            <div className="input-container">
+              <label className="placeholder">Phone Number</label>
+              <input type="text" className="long-input" />
+            </div>
+          </div>
+
+          {/* <div>
             <input
               type="text"
               placeholder="Patient ID"
@@ -88,37 +166,7 @@ const AddPatient = () => {
               value={patientID}
               required
             />
-          </div>
-
-          <div>
-            <input
-              type="text"
-              placeholder="Name"
-              onChange={(e) => setName(e.target.value)}
-              value={name}
-              required
-            />
-          </div>
-
-          <div>
-            <input
-              type="number"
-              placeholder="Age"
-              onChange={(e) => setAge(e.target.value)}
-              value={age}
-              required
-            />
-          </div>
-
-          <div>
-            <input
-              type="text"
-              placeholder="Gender"
-              onChange={(e) => setGender(e.target.value)}
-              value={gender}
-              required
-            />
-          </div>
+          </div> 
 
           <div>
             <input
@@ -138,9 +186,20 @@ const AddPatient = () => {
               value={status}
               required
             />
-          </div>
+          </div> */}
 
-          <button type="submit">Next</button>
+          <div className="nav-buttons">
+            <button className="back" onClick={() => navigate("/homepage")}>
+              Back
+            </button>
+            <button
+              className="proceed"
+              type="submit"
+              onClick={() => navigate("/consent")}
+            >
+              Proceed
+            </button>
+          </div>
         </form>
       </div>
     </section>
