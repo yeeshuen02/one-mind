@@ -15,6 +15,8 @@ import totalIcon from "../../assets/total.png";
 import searchRightIcon from "../../assets/search.png";
 import Datatable from "../Datatable/Datatable";
 import { db } from "../../config/firebase";
+import { useNavigate } from "react-router-dom";
+
 import {
   collection,
   query,
@@ -25,7 +27,11 @@ import {
 
 import "./HomePage.css";
 
+
+
 const Homepage = () => {
+  const navigate = useNavigate();
+
   const [selectedValue, setSelectedValue] = useState("");
 
   // Function to handle changes in the dropdown selection
@@ -112,6 +118,8 @@ const Homepage = () => {
             <img src={homePageOneMindLogo} alt="search Logo" />
             <p>OneMind</p>
           </button>
+          <button className="get-started-button" onClick={() => navigate('/results')}>Let's gggggd</button>
+
         </div>
         <div className="homepage-right-side">
           <div className="noti-icon">
