@@ -10,8 +10,8 @@ import statusIcon from "../../assets/status-icon.png";
 import notiIcon from "../../assets/notification.png";
 import userIcon from "../../assets/user.png";
 import inReviewIcon from "../../assets/in-review.png";
-import diagnosedIcon from "../../assets/diagnosed.png";
-import totalIcon from "../../assets/total.png";
+import diagnosedIcon from "../../assets/diagnosed-icon.png";
+import totalIcon from "../../assets/total-icon.png";
 import searchRightIcon from "../../assets/search.png";
 import Datatable from "../Datatable/Datatable";
 import { db } from "../../config/firebase";
@@ -118,16 +118,10 @@ const Homepage = () => {
             <img src={homePageOneMindLogo} alt="search Logo" />
             <p>OneMind</p>
           </button>
-          <button className="get-started-button" onClick={() => navigate('/results')}>Let's gggggd</button>
+          <button className="get-started-button" onClick={() => navigate('/results')}>To results page for now</button>
 
         </div>
         <div className="homepage-right-side">
-          <div className="noti-icon">
-            <img src={notiIcon} alt="search Logo" />
-          </div>
-          <div className="noti-icon">
-            <img src={notiIcon} alt="search Logo" />
-          </div>
           <div className="user-icon">
             <img src={userIcon} alt="search Logo" />
           </div>

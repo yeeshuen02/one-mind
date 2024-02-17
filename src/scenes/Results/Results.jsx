@@ -9,11 +9,13 @@ import infoCircleIcon from "../../assets/info-circle.png";
 import infoCircleBlueIcon from "../../assets/info-circle-blue.png";
 
 
+import { useNavigate } from "react-router-dom";
 
 
 
 const Results = () => {
 
+    const navigate = useNavigate();
 
     
     const [showText, setShowText] = useState(true);
@@ -116,7 +118,9 @@ const Results = () => {
             
         </div>
         <div className='results-content-forth'>
-            <button className='questionnaire-report-button'>View Questionnaire Report</button>
+            <button className='questionnaire-report-button' onClick={() => navigate('/report')}>View Questionnaire Report</button>
+
+
         </div>
       </div>
     </div>
