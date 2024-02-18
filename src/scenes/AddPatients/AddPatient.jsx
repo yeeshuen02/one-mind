@@ -14,7 +14,8 @@ import "../../scenes/AddPatients/AddPatients.css";
 
 const AddPatient = () => {
   const navigate = useNavigate();
-  // const [patientID, setPatientID] = useState('');
+
+  const [patientID, setPatientID] = useState("");
   const [patientCounter, setPatientCounter] = useState(100);
 
   useEffect(() => {
@@ -24,21 +25,16 @@ const AddPatient = () => {
 
   //the format for ID
   const generatePatientId = () => {
-    return `P${patientCounter.toString().padStart(5, "0")}`;
+    return `P${(patientCounter + 1).toString().padStart(5, "0")}`;
   };
 
-  const addNewPatient = () => {
-    // Increment the patient counter
-    setPatientCounter((prevCounter) => prevCounter + 1);
-  };
-
-  const [patientID, setPatientID] = useState("");
   const [name, setName] = useState("");
   const [dob, setDOB] = useState("");
   const [age, setAge] = useState("");
   const [gender, setGender] = useState("");
   const [occupation, setOccupation] = useState("");
   const [phoneNo, setPhoneNo] = useState("");
+
   const [score, setScore] = useState("");
   const [status, setStatus] = useState("");
 
@@ -48,8 +44,11 @@ const AddPatient = () => {
       const newPatientRef = await addDoc(collection(db, "PatientList"), {
         PatientID: patientID,
         Name: name,
+        DateofBirth: dob,
         Age: age,
         Gender: gender,
+        Occupation: occupation,
+        PhoneNumber: phoneNo,
         Date: serverTimestamp(),
         Score: score,
         Status: status,
@@ -154,6 +153,7 @@ const AddPatient = () => {
                 value={gender}
                 required
               >
+                <option>Select Gender</option>
                 <option>Male</option>
                 <option>Female</option>
               </select>
