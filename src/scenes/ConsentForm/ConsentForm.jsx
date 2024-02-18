@@ -13,7 +13,6 @@ function ConsentForm() {
 
   const handleNextPage = () => {
     if (isChecked) {
-      // Proceed to the next page
       navigate("/consent");
     } else {
       alert("Please agree to consent before proceeding.");
@@ -85,24 +84,24 @@ function ConsentForm() {
 
           <h4>Understanding and Agreement:</h4>
           <li>
-            Purpose of Data Use: Your data results will be used exclusively to
-            enhance our diagnostic tools for mental health care.
+            <strong>Purpose of Data Use: </strong>Your data results will be used
+            exclusively to enhance our diagnostic tools for mental health care.
           </li>
           <li>
-            Confidentiality: All data collected will be treated with strict
-            confidentiality. Personal details will be removed and replaced with
-            a unique identifier to protect your identity.
+            <strong>Confidentiality: </strong>All data collected will be treated
+            with strict confidentiality. Personal details will be removed and
+            replaced with a unique identifier to protect your identity.
           </li>
           <li>
-            Data Protection: Stringent security measures will protect the data
-            stored on our website. Access will be restricted to authorised
-            personnel only.
+            <strong>Data Protection: </strong>Stringent security measures will
+            protect the data stored on our website. Access will be restricted to
+            authorised personnel only.
           </li>
           <li>
-            Duration of Data Retention: Your information will be stored securely
-            for an indefinite period unless you decide to withdraw your consent,
-            after which all your data will be anonymised and kept for improving
-            diagnostic tools.
+            <strong>Duration of Data Retention: </strong>Your information will
+            be stored securely for an indefinite period unless you decide to
+            withdraw your consent, after which all your data will be anonymised
+            and kept for improving diagnostic tools.
           </li>
 
           <h4>By clicking the box below, I acknowledge that:</h4>

@@ -160,13 +160,21 @@
   padding: 35px 20px 15px;
 }
 
-/* .short-input {
+.patient-form select {
   width: 260px;
+  height: 100%;
+  background: #fdfdff;
+  border: none;
+  outline: none;
+  border-radius: 15px;
+  font-size: 20px;
+  font-weight: 700;
+  color: #242e49;
+  padding: 35px 20px 15px;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
 }
-
-.long-input {
-  width: 260px;
-} */
 
 .placeholder {
   position: absolute;
@@ -203,4 +211,30 @@
   font-weight: 700;
   border-radius: 10px;
   color: #fff;
+}
+
+.step-line1 {
+  position: absolute;
+  width: 200px;
+  height: 10px;
+  background-color: #0f67fe;
+  margin-bottom: 40px;
+  left: 400px;
+}
+
+.step-line2 {
+  position: absolute;
+  width: 200px;
+  height: 10px;
+  background-color: #0f67fe;
+  margin-bottom: 40px;
+}
+
+.step-line3 {
+  position: absolute;
+  width: 200px;
+  height: 10px;
+  background-color: #0f67fe;
+  margin-bottom: 40px;
+  right: 400px;
 }

@@ -15,26 +15,30 @@ import "../../scenes/AddPatients/AddPatients.css";
 const AddPatient = () => {
   const navigate = useNavigate();
   // const [patientID, setPatientID] = useState('');
-  // const [patientCounter,setPatientCounter] = useState (100);
+  const [patientCounter, setPatientCounter] = useState(100);
 
-  // useEffect(()=>{
-  //     const generatedId = generatePatientId();
-  //     setPatientId(generatedId);
-  // }, [patientCounter]);
+  useEffect(() => {
+    const generatedId = generatePatientId();
+    setPatientID(generatedId);
+  }, [patientCounter]);
 
-  // //the format for ID
-  // const generatePatientId = () => {
-  //     return `P${patientCounter.toString().padStart(5, '0')}`;
-  //   };
+  //the format for ID
+  const generatePatientId = () => {
+    return `P${patientCounter.toString().padStart(5, "0")}`;
+  };
 
-  // const addNewPatient = () => {
-  //     // Increment the patient counter
-  // setPatientCounter((prevCounter) => prevCounter + 1);
+  const addNewPatient = () => {
+    // Increment the patient counter
+    setPatientCounter((prevCounter) => prevCounter + 1);
+  };
 
   const [patientID, setPatientID] = useState("");
   const [name, setName] = useState("");
+  const [dob, setDOB] = useState("");
   const [age, setAge] = useState("");
   const [gender, setGender] = useState("");
+  const [occupation, setOccupation] = useState("");
+  const [phoneNo, setPhoneNo] = useState("");
   const [score, setScore] = useState("");
   const [status, setStatus] = useState("");
 
@@ -52,7 +56,7 @@ const AddPatient = () => {
       });
 
       console.log("Document written with ID: ", newPatientRef.id);
-      navigate(-1);
+      navigate("/consent");
     } catch (err) {
       console.log(err);
     }
@@ -78,6 +82,10 @@ const AddPatient = () => {
 
       <div className="information-container">
         <div className="progress-indicator">
+          {/* <hr className="step-line1" />
+          <div className="step-line2" />
+          <div className="step-line3" /> */}
+
           <div className="progress-element-active">
             <div className="circle-out-active">
               <span>1</span>
@@ -114,14 +122,18 @@ const AddPatient = () => {
                 type="text"
                 onChange={(e) => setName(e.target.value)}
                 value={name}
-                className="long-input"
                 required
               />
               <label className="placeholder">Name</label>
             </div>
 
             <div className="input-container">
-              <input type="text" className="long-input" required />
+              <input
+                type="date"
+                onChange={(e) => setDOB(e.target.value)}
+                value={dob}
+                required
+              />
               <label className="placeholder">Date of Birth</label>
             </div>
 
@@ -131,30 +143,40 @@ const AddPatient = () => {
                 type="number"
                 onChange={(e) => setAge(e.target.value)}
                 value={age}
-                className="short-input"
                 required
               />
             </div>
 
             <div className="input-container">
               <label className="placeholder">Gender</label>
-              <input
-                type="text"
+              <select
                 onChange={(e) => setGender(e.target.value)}
                 value={gender}
-                className="short-input"
+                required
+              >
+                <option>Male</option>
+                <option>Female</option>
+              </select>
+            </div>
+
+            <div className="input-container">
+              <label className="placeholder">Occupation</label>
+              <input
+                type="text"
+                onChange={(e) => setOccupation(e.target.value)}
+                value={occupation}
                 required
               />
             </div>
 
             <div className="input-container">
-              <label className="placeholder">Occupation</label>
-              <input type="text" className="long-input" />
-            </div>
-
-            <div className="input-container">
               <label className="placeholder">Phone Number</label>
-              <input type="text" className="long-input" />
+              <input
+                type="text"
+                onChange={(e) => setPhoneNo(e.target.value)}
+                value={phoneNo}
+                required
+              />
             </div>
           </div>
 
@@ -189,14 +211,14 @@ const AddPatient = () => {
           </div> */}
 
           <div className="nav-buttons">
-            <button className="back" onClick={() => navigate("/homepage")}>
+            <button
+              className="back"
+              type="submit"
+              onClick={() => navigate("/homepage")}
+            >
               Back
             </button>
-            <button
-              className="proceed"
-              type="submit"
-              onClick={() => navigate("/consent")}
-            >
+            <button className="proceed" type="submit" onSubmit={handleAdd}>
               Proceed
             </button>
           </div>
