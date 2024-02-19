@@ -2,18 +2,41 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import homePageOneMindLogo from "../../assets/logo-blue.png";
 import "../../scenes/ConsentForm/ConsentForm.css";
+import {
+  collection,
+  addDoc,
+  serverTimestamp,
+} from "firebase/firestore";
+import { db } from "../../config/firebase";
+import { useLocation } from "react-router-dom";
+
 
 function ConsentForm() {
   const navigate = useNavigate();
   const [isChecked, setIsChecked] = useState(false);
+  const location = useLocation();
+  const { patientID, name } = location.state;
 
   const handleCheckboxChange = () => {
     setIsChecked(!isChecked);
   };
 
-  const handleNextPage = () => {
+  const handleNextPage = async () => {
     if (isChecked) {
-      navigate("/consent");
+      try {
+        // Store consent information in Firebase
+        const consentRef = await addDoc(collection(db, "ConsentList"), {
+          PatientID: patientID,
+          Name: name,
+          ConsentDate: serverTimestamp(),
+          ConsentGiven: true,
+        });
+
+        navigate("/questionnaire"); 
+      } catch (error) {
+        console.error("Error adding consent document:", error);
+        alert("An error occurred. Please try again later.");
+      }
     } else {
       alert("Please agree to consent before proceeding.");
     }
