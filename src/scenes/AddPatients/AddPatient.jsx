@@ -75,6 +75,9 @@ const AddPatient = () => {
         Status: status,
       });
 
+      const counterDocRef = doc(db, "PatientList", "PatientID");
+      await setDoc(counterDocRef, { value: patientCounter + 1 });
+
       console.log("Document written with ID: ", newPatientRef.id);
       navigate("/consent");
     } catch (err) {
