@@ -107,7 +107,7 @@ const Datatable = ({search, selectedValue, selectedDate, selectedGenderOption, f
             ...data.initialState,
             pagination: { paginationModel: { pageSize: 8 } },
           }}
-            pageSizeOptions={[0,8]}
+            // pageSizeOptions={[0,8]}
 
           checkboxSelection
         />

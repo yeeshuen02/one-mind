@@ -1,46 +1,55 @@
+import "./datatable.css";
+
 export const listColumns = [
   { field: "PatientID", 
     headerName: "Patient ID", 
-    width: 180 
+    width: 150 ,
+    headerClassName: 'id-header',
+  cellClassName: 'id-cell',
   },
   {
     field: "Name",
     headerName: "Name",
     width: 370,
+    headerClassName: 'name-header',
+  cellClassName: 'name-cell',
   },
   {
     field: "Age",
-    headerName: "Age",
-    width: 120,
+  headerName: "Age",
+  width: 150,
+  headerClassName: 'age-header',
+  cellClassName: 'age-cell',
   },
   {
       field: "Gender",
       headerName: "Gender",
-      width: 120,
+      width: 170,
+      headerClassName: 'gender-header',
+  cellClassName: 'gender-cell',
   },
   {
     field: "Date",
     headerName: "Date",
-    width: 150,
-    renderCell: (params) => formatDate(params.value) 
+    width: 250,
+    renderCell: (params) => formatDate(params.value) ,
+    headerClassName: 'date-header',
+  cellClassName: 'date-cell',
   },
   {
       field: "Score",
       headerName: "PHQ-9 Score",
-      width: 180,
+      width: 200,
+      headerClassName: 'score-header',
+  cellClassName: 'score-cell',
   },
 
   {
     field: "Status",
     headerName: "Status",
-    width: 120,
-  //   renderCell: (params) => {
-  //     return (
-  //       <div className={`cellWithStatus ${params.row.status}`}>
-  //         {params.row.status}
-  //       </div>
-  //     );
-  //   },
+    width: 220,
+    headerClassName: 'status-header',
+    cellClassName: 'status-cell',
   },
 ];
 
