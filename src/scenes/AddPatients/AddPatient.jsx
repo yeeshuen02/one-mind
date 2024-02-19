@@ -172,7 +172,9 @@ const AddPatient = () => {
             <div className="input-container">
               <label className="placeholder">Phone Number</label>
               <input
-                type="text"
+                type="tel"
+                pattern="01\d-\d{7}|01\d-\d{8}"
+                placeholder="012-3456789"
                 onChange={(e) => setPhoneNo(e.target.value)}
                 value={phoneNo}
                 required
