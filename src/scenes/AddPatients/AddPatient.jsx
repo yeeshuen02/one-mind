@@ -21,7 +21,7 @@ const AddPatient = () => {
   useEffect(() => {
     const fetchPatientCounter = async () => {
       try {
-        const counterDocRef = doc(db, "PatientList", "PatientID"); // Update with the actual document ID
+        const counterDocRef = doc(db, "PatientList", "PatientID"); 
         const counterDocSnapshot = await getDoc(counterDocRef);
 
         if (counterDocSnapshot.exists()) {
@@ -78,8 +78,9 @@ const AddPatient = () => {
       const counterDocRef = doc(db, "PatientList", "PatientID");
       await setDoc(counterDocRef, { value: patientCounter + 1 });
 
+      setPatientCounter((prevCounter) => prevCounter + 1);
       console.log("Document written with ID: ", newPatientRef.id);
-      navigate("/consent");
+      navigate("/consent", { state: { patientID, name } });
     } catch (err) {
       console.log(err);
     }
