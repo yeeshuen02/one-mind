@@ -10,11 +10,13 @@ import statusIcon from "../../assets/status-icon.png";
 import notiIcon from "../../assets/notification.png";
 import userIcon from "../../assets/user.png";
 import inReviewIcon from "../../assets/in-review.png";
-import diagnosedIcon from "../../assets/diagnosed.png";
-import totalIcon from "../../assets/total.png";
+import diagnosedIcon from "../../assets/diagnosed-icon.png";
+import totalIcon from "../../assets/total-icon.png";
 import searchRightIcon from "../../assets/search.png";
 import Datatable from "../Datatable/Datatable";
 import { db } from "../../config/firebase";
+import { useNavigate } from "react-router-dom";
+
 import {
   collection,
   query,
@@ -25,24 +27,44 @@ import {
 
 import "./HomePage.css";
 
-const Homepage = () => {
-  const [selectedValue, setSelectedValue] = useState("");
 
-  // Function to handle changes in the dropdown selection
+const Homepage = () => {
+  const navigate = useNavigate();
+
+  //search bar
+  const [search, setSearch] = useState("");
+  const handleSearch = (event) => {
+    setSearch(event.target.value);
+  };
+ 
+  //filter age
+  const [selectedValue, setSelectedValue] = useState("");
   const handleDropdownChange = (event) => {
     setSelectedValue(event.target.value);
   };
-
-  //radio button
-  const [selectedOption, setSelectedOption] = useState("option1");
-  const [selectedOption2, setSelectedOption2] = useState("option1");
-
-  const handleOptionChange = (event) => {
-    setSelectedOption(event.target.value);
+ 
+  //filter date
+  const [selectedDate, setSelectedDate] = useState("");
+  const handleDateChange = (event) => {
+    setSelectedDate(event.target.value);
   };
-
-  const handleOptionChange2 = (event) => {
-    setSelectedOption2(event.target.value);
+ 
+  //filter gender 
+  const [selectedGenderOption, setSelectedGenderOption] = useState("");
+  const handleGenderOption = (event) => {
+    setSelectedGenderOption(event.target.value);
+  };
+ 
+  //filter phq9 score
+  const [filterScore, setfilterScore] = useState("");
+  const handleFilterScore = (event) => {
+    setfilterScore(event.target.value);
+  };
+ 
+  //filter status
+  const [selectedStatusOption, setSelectedStatusOption] = useState("");
+  const handleStatusOption = (event) => {
+    setSelectedStatusOption(event.target.value);
   };
 
   //the statistics
@@ -112,14 +134,10 @@ const Homepage = () => {
             <img src={homePageOneMindLogo} alt="search Logo" />
             <p>OneMind</p>
           </button>
+          <button className="get-started-button" onClick={() => navigate('/results')}>To results page for now</button>
+
         </div>
         <div className="homepage-right-side">
-          <div className="noti-icon">
-            <img src={notiIcon} alt="search Logo" />
-          </div>
-          <div className="noti-icon">
-            <img src={notiIcon} alt="search Logo" />
-          </div>
           <div className="user-icon">
             <img src={userIcon} alt="search Logo" />
           </div>
@@ -133,7 +151,11 @@ const Homepage = () => {
               <img src={searchIcon} alt="search Logo" />
               <p>Filter</p>
             </div>
-            <input type="text" placeholder="ID/Name" />
+            <input 
+              type="text" 
+              placeholder="ID/Name" 
+              value={search} 
+              onChange={handleSearch}/>
           </div>
           <div className="age-block">
             <div className="age-search">
@@ -146,13 +168,13 @@ const Homepage = () => {
               onChange={handleDropdownChange}
             >
               <option value="">Choose an option</option>
-              <option value="option1">1-10</option>
-              <option value="option2">10-20</option>
-              <option value="option3">30-40</option>
-              <option value="option3">40-50</option>
-              <option value="option3">50-60</option>
-              <option value="option3">60-70</option>
-              <option value="option3">70-80</option>
+              <option value="1-10">1-10</option>
+              <option value="10-20">10-20</option>
+              <option value="30-40">30-40</option>
+              <option value="40-50">40-50</option>
+              <option value="50-60">50-60</option>
+              <option value="60-70">60-70</option>
+              <option value="70-80">70-80</option>
             </select>
           </div>
           <div className="date-block">
@@ -160,7 +182,10 @@ const Homepage = () => {
               <img src={dateIcon} alt="search Logo" />
               <p>Date</p>
             </div>
-            <input type="date" placeholder="Select a date" />
+            <input 
+              type="date"  
+              value={selectedDate} 
+              onChange={handleDateChange} />
           </div>
 
           <div className="gender-block">
@@ -172,20 +197,20 @@ const Homepage = () => {
               Male
               <input
                 type="radio"
-                value="option1"
-                checked={selectedOption === "option1"}
-                onChange={handleOptionChange}
+                value="Male"
+                checked={selectedGenderOption === "Male"}
+                onChange={handleGenderOption}
               />
               <span className="checkmark"></span>
             </label>
-
+ 
             <label className="gender-radio">
               Female
               <input
-                value="option2"
+                value="Female"
                 type="radio"
-                checked={selectedOption === "option2"}
-                onChange={handleOptionChange}
+                checked={selectedGenderOption === "Female"}
+                onChange={handleGenderOption}
               />
               <span className="checkmark"></span>
             </label>
@@ -197,7 +222,11 @@ const Homepage = () => {
               <img src={phq9Icon} alt="search Logo" />
               <p>PHQ-9 Score</p>
             </div>
-            <input type="text" placeholder="Enter a score" />
+            <input 
+              type="number" 
+              placeholder="Enter a score" 
+              value={filterScore}
+              onChange={handleFilterScore}/>
           </div>
           <div className="name-block">
             <div className="name-search">
@@ -205,23 +234,23 @@ const Homepage = () => {
               <p>Status</p>
             </div>
             <label className="gender-radio">
-              In Review
+            In Review
               <input
                 type="radio"
-                value="option1"
-                checked={selectedOption2 === "option1"}
-                onChange={handleOptionChange2}
+                value="In Review"
+                checked={selectedStatusOption === "In Review"}
+                onChange={handleStatusOption}
               />
               <span className="checkmark"></span>
             </label>
-
+ 
             <label className="gender-radio">
               Diagnosed
               <input
-                value="option2"
+                value="Diagnosed"
                 type="radio"
-                checked={selectedOption2 === "option2"}
-                onChange={handleOptionChange2}
+                checked={selectedStatusOption === "Diagnosed"}
+                onChange={handleStatusOption}
               />
               <span className="checkmark"></span>
             </label>
@@ -260,7 +289,20 @@ const Homepage = () => {
               </div>
             </div>
           </div>
-          <Datatable />
+          <Datatable 
+            search={search}
+            handleSearch={handleSearch}
+            selectedValue={selectedValue}
+            handleDropdownChange={handleDropdownChange}
+            selectedDate={selectedDate}
+            handleDateChange={handleDateChange}
+            selectedGenderOption={selectedGenderOption}
+            handleGenderOption={handleGenderOption}
+            selectedStatusOption={selectedStatusOption}
+            handleStatusOption={handleStatusOption}
+            filterScore={filterScore}
+            handleFilterScore={handleFilterScore}
+          />
 
           {/* <div className="home-page-navigation">
             <button>Previous</button>

@@ -24,7 +24,7 @@
 
 .homepage-right-side {
   display: flex;
-  margin-right: 30px;
+  margin-right: 45px;
   margin-top: 25px;
   gap: 30px;
 }
@@ -54,6 +54,7 @@
   flex: 10%;
   flex-direction: column;
   justify-content: space-between;
+  margin-left: 30px;
 }
 
 .filter-bar img {
@@ -108,7 +109,7 @@
 
 .home-main-content {
   flex: 70%;
-  border-radius: 20px;
+  margin-right: 30px;
 }
 
 .diagnosis-details {

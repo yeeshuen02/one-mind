@@ -1,44 +1,61 @@
-export const listColumns = [
-    { field: "PatientID", 
-      headerName: "Patient ID", 
-      width: 70 
-    },
-    {
-      field: "Name",
-      headerName: "Name",
-      width: 200,
-    },
-    {
-      field: "Age",
-      headerName: "Age",
-      width: 100,
-    },
-    {
-        field: "Gender",
-        headerName: "Gender",
-        width: 120,
-    },
-    {
-      field: "Date",
-      headerName: "Date",
-      width: 150,
-    },
-    {
-        field: "Score",
-        headerName: "PHQ-9 Score",
-        width: 120,
-    },
+import "./datatable.css";
 
-    {
-      field: "Status",
-      headerName: "Status",
-      width: 160,
-    //   renderCell: (params) => {
-    //     return (
-    //       <div className={`cellWithStatus ${params.row.status}`}>
-    //         {params.row.status}
-    //       </div>
-    //     );
-    //   },
-    },
-  ];
+export const listColumns = [
+  { field: "PatientID", 
+    headerName: "Patient ID", 
+    width: 150 ,
+    headerClassName: 'id-header',
+  cellClassName: 'id-cell',
+  },
+  {
+    field: "Name",
+    headerName: "Name",
+    width: 370,
+    headerClassName: 'name-header',
+  cellClassName: 'name-cell',
+  },
+  {
+    field: "Age",
+  headerName: "Age",
+  width: 150,
+  headerClassName: 'age-header',
+  cellClassName: 'age-cell',
+  },
+  {
+      field: "Gender",
+      headerName: "Gender",
+      width: 170,
+      headerClassName: 'gender-header',
+  cellClassName: 'gender-cell',
+  },
+  {
+    field: "Date",
+    headerName: "Date",
+    width: 250,
+    renderCell: (params) => formatDate(params.value) ,
+    headerClassName: 'date-header',
+  cellClassName: 'date-cell',
+  },
+  {
+      field: "Score",
+      headerName: "PHQ-9 Score",
+      width: 200,
+      headerClassName: 'score-header',
+  cellClassName: 'score-cell',
+  },
+
+  {
+    field: "Status",
+    headerName: "Status",
+    width: 220,
+    headerClassName: 'status-header',
+    cellClassName: 'status-cell',
+  },
+];
+
+const formatDate = (timestamp) => {
+  if (!timestamp) return ''; 
+  const dateObject = timestamp.toDate();
+  const options = { year: 'numeric', month: 'numeric', day: 'numeric' };
+  return dateObject.toLocaleDateString(undefined, options);
+};

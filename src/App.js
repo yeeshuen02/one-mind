@@ -5,6 +5,9 @@ import { Routes, Route } from "react-router-dom";
 import LandingPage from "./scenes/Landing/LandingPage";
 import AddPatient from "./scenes/AddPatients/AddPatient";
 import ConsentForm from "./scenes/ConsentForm/ConsentForm";
+import Results from "./scenes/Results/Results";
+import Report from "./scenes/Report/Report";
+
 
 function App() {
   return (
@@ -14,6 +17,9 @@ function App() {
       <Route path="/homepage" element={<Homepage />} />
       <Route path="/addpatient" element={<AddPatient />} />
       <Route path="/consent" element={<ConsentForm />} />
+      <Route path="/results" element={<Results />} />
+      <Route path="/report" element={<Report />} />
+
     </Routes>
   );
 }

@@ -1,22 +1,25 @@
+
+
 .datatable {
   height: auto;
   width: 100%;
   margin-top: 40px;
-  margin-left: 0px;
-
+  background-color: #F2F5F9;
+  padding: 30px;
+  border-radius: 30px;
+}
   .datatableTitle {
     width: 100%;
     font-size: 30px;
-    color: gray;
     margin-bottom: 10px;
     display: flex;
     align-items: center;
     justify-content: space-between;
-
+    font-weight: 900;
+  }
     .addpatient {
       text-decoration: none;
       align-items: center;
-
       font-size: 20px;
       font-weight: bold;
       background-color: #0f67fe;
@@ -28,5 +31,41 @@
       cursor: pointer;
       margin-left: auto;
     }
-  }
+
+
+
+
+
+.datagrid.MuiDataGrid-root {
+  border: none;
+  margin-top: 30px;
 }
+
+    .datagrid .MuiDataGrid-row {
+      background-color: white;
+      border-radius: 10px;
+      align-items: center;
+    }
+    
+    
+.id-cell, .name-cell{
+font-weight: 900;
+justify-content: center;
+}
+
+.age-cell, .gender-cell,.date-cell, .score-cell, .status-cell{
+  color: #A3A3A3;
+  font-weight: 580;
+  align-items: center;
+
+}
+
+
+
+    .age-header,.id-header,.name-header,.gender-header,.date-header, .score-header, .status-header {
+      font-weight: 900 !important; 
+      font-size: 20px;
+    }
+     
+     
+    
