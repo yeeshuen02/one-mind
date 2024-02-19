@@ -68,7 +68,9 @@ const Datatable = ({search, selectedValue, selectedDate, selectedGenderOption, f
     if (selectedGenderOption) {
       filteredData = filteredData.filter(
         (item) =>
-          item.Gender.toLowerCase() === selectedGenderOption.toLowerCase()
+          item.Gender=== selectedGenderOption
+          // item.Gender.toLowerCase() === selectedGenderOption.toLowerCase()
+
       );
     }
 
@@ -84,7 +86,7 @@ const Datatable = ({search, selectedValue, selectedDate, selectedGenderOption, f
     if (selectedStatusOption) {
       filteredData = filteredData.filter(
         (item) =>
-          item.Status.toLowerCase() === selectedStatusOption.toLowerCase()
+          item.Status === selectedStatusOption
       );
     }
 
