@@ -1,11 +1,11 @@
 import { useState, useEffect } from "react";
-import { v4 as uuidv4 } from "uuid";
 import {
   doc,
   setDoc,
   collection,
   addDoc,
   serverTimestamp,
+  getDoc,
 } from "firebase/firestore";
 import { db } from "../../config/firebase";
 import { useNavigate } from "react-router-dom";
@@ -19,13 +19,34 @@ const AddPatient = () => {
   const [patientCounter, setPatientCounter] = useState(100);
 
   useEffect(() => {
+    const fetchPatientCounter = async () => {
+      try {
+        const counterDocRef = doc(db, "PatientList", "PatientID"); // Update with the actual document ID
+        const counterDocSnapshot = await getDoc(counterDocRef);
+
+        if (counterDocSnapshot.exists()) {
+          const counterValue = counterDocSnapshot.data().value;
+          setPatientCounter(counterValue);
+        } else {
+          await setDoc(counterDocRef, { value: 100 });
+        }
+      } catch (error) {
+        console.error("Error fetching patient counter:", error);
+      }
+    };
+
+    fetchPatientCounter();
+  }, []);
+
+  useEffect(() => {
     const generatedId = generatePatientId();
     setPatientID(generatedId);
   }, [patientCounter]);
 
-  //the format for ID
+  // Updated ID generation logic
   const generatePatientId = () => {
-    return `P${(patientCounter + 1).toString().padStart(5, "0")}`;
+    const incrementedCounter = patientCounter + 1;
+    return `P${incrementedCounter.toString().padStart(5, "0")}`;
   };
 
   const [name, setName] = useState("");
