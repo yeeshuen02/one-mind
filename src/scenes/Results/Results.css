@@ -48,7 +48,7 @@
   justify-content: end;
   display: flex;
   flex-direction: column; ; 
-  margin-right: 20px;
+  margin-right: 30px;
 }
 
 .patient-details-content{
@@ -80,7 +80,7 @@ line-height: 1cm;
     display: flex;
     align-items: center;
     padding: 10px;
-    margin: 100px 0px 0px 30px;
+    margin: 100px 10px 0px 30px;
 
   }
 
@@ -155,7 +155,7 @@ line-height: 1cm;
 }
 
 .results-gender {
-  margin-right: 221px;
+  margin-right: 204px;
 }
 
 .results-age {
@@ -163,7 +163,7 @@ line-height: 1cm;
 }
 
 .results-phone {
-  margin-right: 160px;
+  margin-right: 143px;
 }
 
 .results-occupation {
