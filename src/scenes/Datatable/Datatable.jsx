@@ -58,8 +58,11 @@ const Datatable = ({search, selectedValue, selectedDate, selectedGenderOption, f
       const formattedSelectedDate = new Date(selectedDate).toLocaleDateString();
       filteredData = filteredData.filter(
         (item) => {
-          const itemDate = item.Date.toDate().toLocaleDateString();
-          return itemDate === formattedSelectedDate;
+          if (item.Date && item.Date.toDate) {
+            const itemDate = item.Date.toDate().toLocaleDateString();
+            return itemDate === formattedSelectedDate;
+          }
+          return false;
         }
       );
     }
