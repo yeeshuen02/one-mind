@@ -34,6 +34,7 @@ const Results = () => {
           <p>OneMind</p>
         </button>
       </div>
+      
       <div className="hero-content">
         <h1>Results</h1>
         <p>
@@ -41,6 +42,7 @@ const Results = () => {
         </p>
       </div>
     </div>
+    
     <div className="results-bottom-section" >
       <div className="resuts-content">
         <div className="results-content-first">
@@ -49,27 +51,28 @@ const Results = () => {
                 <p id="patient-name">Allen Matt</p>
                 <p id="patient-date">19.07.2023</p>
             </div>
+            
             <div className="results-details">
                 <div className="results-details-top-row">
-                    <div>
+                    <div className='results-gender'>
                         <p>Gender</p>
                         <p class="patient-details-content">Male</p>
                     </div>
-                    <div>
+                    <div className='results-age'>
                         <p>Age</p>
                         <p  class="patient-details-content">12</p>
                     </div>
-                    <div>
+                    <div className='results-clinician'>
                         <p>Clinician</p>
                         <p  class="patient-details-content"> Dr Morge</p>
                     </div>
                 </div>
                 <div className="results-details-bottom-row">
-                    <div>
+                    <div className='results-phone'>
                         <p>Phone Number</p>
                         <p class="patient-details-content">0123829018</p>
                     </div>
-                    <div>
+                    <div className='results-occupation'>
                         <p>Occupation</p>
                         <p  class="patient-details-content">Data Analyst</p>
                     </div>
@@ -80,18 +83,20 @@ const Results = () => {
                 </div>
             </div>
         </div>
+        
         <div className="results-content-second">
             <div className="second-row-left-right">
-                <img src={modelIcon} alt="search Logo" />
+                <img className="results-icon" src={modelIcon} alt="search Logo" />
                 <p>Model Analysis:</p>
                 <div className="text-background"> <p>Healthy</p></div>
             </div>
             <div className="second-row-left-right">
-                <img src={clipboardIcon} alt="search Logo" />
+                <img className="results-icon" src={clipboardIcon} alt="search Logo" />
                 <p>PHQ-9 Severity:</p>
                 <div className="text-background"> <p>Dummy</p></div>
             </div>
         </div>
+        
         <div className="results-content-third">
 
                 {showText ? (
@@ -106,8 +111,7 @@ const Results = () => {
                 ) : (
                     <div className='after-confirming'>
 
-                    <img src={infoCircleBlueIcon
-} alt="search Logo" />
+                    <img src={infoCircleBlueIcon} alt="search Logo" />
                     <p>Results has been confirmed</p>
                     {/* Add additional content as needed */}
                     </div>
