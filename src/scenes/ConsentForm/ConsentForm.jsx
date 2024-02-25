@@ -1,10 +1,9 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import homePageOneMindLogo from "../../assets/logo-blue.png";
 import "../../scenes/ConsentForm/ConsentForm.css";
 import { collection, addDoc, serverTimestamp } from "firebase/firestore";
 import { db } from "../../config/firebase";
-import { useLocation } from "react-router-dom";
 
 function ConsentForm() {
   const navigate = useNavigate();
@@ -27,7 +26,7 @@ function ConsentForm() {
           ConsentGiven: true,
         });
 
-        navigate("/questionnaire");
+        navigate("/questionnaire", { state: { patientID} });
       } catch (error) {
         console.error("Error adding consent document:", error);
         alert("An error occurred. Please try again later.");

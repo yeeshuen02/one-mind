@@ -1,10 +1,11 @@
 import { useState } from "react";
 
-export default function Question({ ques, options }) {
+export default function Question({ ques, options, saveOptionselected }) {
   const [selectedOption, setSelectedOption] = useState(null);
 
   const handleOptionClick = (index) => {
     setSelectedOption(index);
+    saveOptionselected(index);
   };
 
   return (
