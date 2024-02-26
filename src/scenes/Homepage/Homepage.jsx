@@ -49,12 +49,20 @@ const Homepage = () => {
     setSelectedDate(event.target.value);
   };
  
-  //filter gender 
-  const [selectedGenderOption, setSelectedGenderOption] = useState("");
-  const handleGenderOption = (event) => {
-    setSelectedGenderOption(event.target.value);
-  };
+// Filter gender
+
+
+
+//filter status
+const [selectedGenderOption, setSelectedGenderOption] = useState("");
+const handleGenderOption = (event) => {
+  setSelectedStatusOption(event.target.value);
+};
  
+
+  
+
+
   //filter phq9 score
   const [filterScore, setfilterScore] = useState("");
   const handleFilterScore = (event) => {
@@ -72,6 +80,13 @@ const Homepage = () => {
   const [totalPerc, setforTotalPerc] = useState(null);
   const [inReviewAmount, setInReviewAmount] = useState(null);
   const [diagnosedAmount, setDiagnosedAmount] = useState(null);
+
+
+  const HorizontalLine = () => {
+    return (
+      <div className="horizontal-line"></div>
+    );
+  }
 
   useEffect(() => {
     const fetchData = async () => {
@@ -157,6 +172,8 @@ const Homepage = () => {
               value={search} 
               onChange={handleSearch}/>
           </div>
+            <HorizontalLine />
+
           <div className="age-block">
             <div className="age-search">
               <img src={ageIcon} alt="search Logo" />
@@ -177,6 +194,8 @@ const Homepage = () => {
               <option value="70-80">70-80</option>
             </select>
           </div>
+          <HorizontalLine />
+
           <div className="date-block">
             <div className="date-search">
               <img src={dateIcon} alt="search Logo" />
@@ -187,36 +206,40 @@ const Homepage = () => {
               value={selectedDate} 
               onChange={handleDateChange} />
           </div>
+          <HorizontalLine />
 
           <div className="gender-block">
-            <div className="gender-search">
-              <img src={genderIcon} alt="gender Logo" />
-              <p>Gender</p>
-            </div>
-            <label className="gender-radio">
-              Male
-              <input
-                type="radio"
-                value="Male"
-                checked={selectedGenderOption === "Male"}
-                onChange={handleGenderOption}
-              />
-              <span className="checkmark"></span>
-            </label>
- 
-            <label className="gender-radio">
-              Female
-              <input
-                value="Female"
-                type="radio"
-                checked={selectedGenderOption === "Female"}
-                onChange={handleGenderOption}
-              />
-              <span className="checkmark"></span>
-            </label>
+      <div className="gender-search">
+        <img src={genderIcon} alt="gender Logo" />
+        <p>Gender</p>
+      </div>
+      
+      <label className="gender-checkbox">
+        Male
+        <input
+          type="checkbox"
+          value="Male"
+          checked={selectedGenderOption.includes("Male")}
+          onChange={() => handleGenderOption("Male")}
+        />
+        <span className="checkmark"></span>
+      </label>
 
-            {/* <p>Selected option: {selectedOption}</p> */}
-          </div>
+      <label className="gender-checkbox">
+        Female
+        <input
+          type="checkbox"
+          value="Female"
+          checked={selectedGenderOption.includes("Female")}
+          onChange={() => handleGenderOption("Female")}
+        />
+        <span className="checkmark"></span>
+      </label>
+    </div>
+
+          
+          <HorizontalLine />
+
           <div className="name-block">
             <div className="name-search">
               <img src={phq9Icon} alt="search Logo" />
@@ -228,12 +251,14 @@ const Homepage = () => {
               value={filterScore}
               onChange={handleFilterScore}/>
           </div>
+          <HorizontalLine />
+
           <div className="name-block">
             <div className="name-search">
               <img src={statusIcon} alt="search Logo" />
               <p>Status</p>
             </div>
-            <label className="gender-radio">
+            <label className="gender-checkbox">
             In Review
               <input
                 type="radio"
@@ -244,7 +269,7 @@ const Homepage = () => {
               <span className="checkmark"></span>
             </label>
  
-            <label className="gender-radio">
+            <label className="gender-checkbox">
               Diagnosed
               <input
                 value="Diagnosed"
@@ -255,8 +280,8 @@ const Homepage = () => {
               <span className="checkmark"></span>
             </label>
 
-            {/* <p>Selected option: {selectedOption}</p> */}
           </div>
+
         </div>
 
         <div className="home-main-content">

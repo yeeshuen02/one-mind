@@ -50,6 +50,7 @@ function Questionnaire() {
     } catch (error) {
       console.error("Error updating scores:", error);
     }
+    navigate("/upload")
   };
 
   return (
