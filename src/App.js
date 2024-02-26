@@ -8,6 +8,8 @@ import ConsentForm from "./scenes/ConsentForm/ConsentForm";
 import Questionnaire from "./scenes/Questionnaire/Questionnaire";
 import Results from "./scenes/Results/Results";
 import Report from "./scenes/Report/Report";
+import Upload from "./scenes/Upload/Upload";
+
 
 function App() {
   return (
@@ -19,7 +21,10 @@ function App() {
       <Route path="/consent" element={<ConsentForm />} />
       <Route path="/questionnaire" element={<Questionnaire />} />
       <Route path="/results" element={<Results />} />
+      <Route path="/upload" element={<Upload />} />
       <Route path="/report" element={<Report />} />
+
+
     </Routes>
   );
 }

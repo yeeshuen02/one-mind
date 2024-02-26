@@ -43,15 +43,15 @@
 .filter-bar {
   display: flex;
   /* justify-content: flex-start; */
-  /* width: auto;  */
+  width: 100%; 
   height: 100%;
   background-color: #5b75fe;
-  padding: 36px;
-  padding-top: 50px;
+  padding: 50px 10px 0px 10px;
+  /* padding-top: 50px; */
   box-sizing: border-box;
   border-radius: 30px;
   gap: 20px;
-  flex: 10%;
+  flex: 30%;
   flex-direction: column;
   justify-content: space-between;
   margin-left: 30px;
@@ -72,6 +72,7 @@
   justify-self: center;
   color: white;
   padding-left: 20px;
+  font-size: 10px;
 }
 
 .filter-bar ::placeholder {
@@ -84,7 +85,7 @@
 .gender-search,
 .PHQ9-search,
 .status-search {
-  font-size: 20px;
+  font-size: 15px;
   font-weight: 10px;
   color: white;
   display: flex;
@@ -101,7 +102,7 @@
 .PHQ9-block,
 .status-block {
   border-bottom: 2px solid #7d92ff; /* Border color is black (#000), adjust as needed */
-  padding: 15px;
+  padding-bottom: 15px;
 }
 #gender-label {
   color: white;
@@ -115,8 +116,8 @@
 .diagnosis-details {
   display: flex;
   gap: 30px;
-  margin-right: 24px;
-  width: 100%;
+  margin-right:40px;
+  width: auto;
 }
 
 .diagnosis-details img {
@@ -133,8 +134,8 @@
   border-radius: 30px;
   height: 200px;
   justify-content: space-between;
-  padding: 10px;
-  padding-bottom: 220px;
+  /* padding: 10px 50px 10px 0px ; */
+  align-items: center;
 }
 
 .in-review-header {
