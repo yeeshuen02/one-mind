@@ -16,7 +16,7 @@ const Datatable = ({search, selectedValue, selectedDate, selectedGenderOption, f
   useEffect(() => {
       //Listen to realtime data
       const unsub = onSnapshot(collection(db, "PatientList"), (snapShot) => {
-        const list = snapShot.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
+        const list = snapShot.docs.map((doc, index) => ({ id: doc.id, index: index + 1, ...doc.data() }));
         setOriginalData(list);
       }, (error)=>{
         console.log(error)
@@ -26,8 +26,6 @@ const Datatable = ({search, selectedValue, selectedDate, selectedGenderOption, f
         unsub();
       }
   }, []);
-
-  console.log(data)
 
   // for filtering data
   useEffect(() => {
@@ -66,12 +64,10 @@ const Datatable = ({search, selectedValue, selectedDate, selectedGenderOption, f
     }
 
     //filter gender
-    if (selectedGenderOption) {
+    if (selectedGenderOption && selectedGenderOption.length > 0) {
       filteredData = filteredData.filter(
-        (item) =>
-          item.Gender=== selectedGenderOption
-          // item.Gender.toLowerCase() === selectedGenderOption.toLowerCase()
-
+        (item) => 
+        (selectedGenderOption.includes(item.Gender))
       );
     }
 
@@ -84,10 +80,10 @@ const Datatable = ({search, selectedValue, selectedDate, selectedGenderOption, f
     }
 
     //filter status
-    if (selectedStatusOption) {
+    if (selectedStatusOption && selectedStatusOption.length > 0) {
       filteredData = filteredData.filter(
-        (item) =>
-          item.Status === selectedStatusOption
+        (item) => 
+        (selectedStatusOption.includes(item.Status))
       );
     }
 

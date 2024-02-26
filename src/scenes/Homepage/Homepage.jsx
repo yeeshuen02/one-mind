@@ -48,20 +48,17 @@ const Homepage = () => {
   const handleDateChange = (event) => {
     setSelectedDate(event.target.value);
   };
- 
-// Filter gender
-
-
-
-//filter status
-const [selectedGenderOption, setSelectedGenderOption] = useState("");
-const handleGenderOption = (event) => {
-  setSelectedStatusOption(event.target.value);
-};
- 
-
   
-
+// filter gender
+  const [selectedGenderOption, setSelectedGenderOption] = useState("");
+  const handleGenderOption = (value) => {
+      setSelectedGenderOption((prevOptions) => {
+      if (prevOptions.includes(value)) {
+        return prevOptions.filter((option) => option !== value);
+      } else {
+        return [...prevOptions, value];
+      }
+    });  }
 
   //filter phq9 score
   const [filterScore, setfilterScore] = useState("");
@@ -71,9 +68,14 @@ const handleGenderOption = (event) => {
  
   //filter status
   const [selectedStatusOption, setSelectedStatusOption] = useState("");
-  const handleStatusOption = (event) => {
-    setSelectedStatusOption(event.target.value);
-  };
+  const handleStatusOption = (value) => {
+    setSelectedStatusOption((prevOptions) => {
+    if (prevOptions.includes(value)) {
+      return prevOptions.filter((option) => option !== value);
+    } else {
+      return [...prevOptions, value];
+    }
+  });  }
 
   //the statistics
   const [totalAmount, setTotalAmount] = useState(null);
@@ -261,10 +263,10 @@ const handleGenderOption = (event) => {
             <label className="gender-checkbox">
             In Review
               <input
-                type="radio"
+                type="checkbox"
                 value="In Review"
-                checked={selectedStatusOption === "In Review"}
-                onChange={handleStatusOption}
+                checked={selectedStatusOption.includes("In Review")}
+                onChange={() => handleStatusOption("In Review")}
               />
               <span className="checkmark"></span>
             </label>
@@ -273,9 +275,9 @@ const handleGenderOption = (event) => {
               Diagnosed
               <input
                 value="Diagnosed"
-                type="radio"
-                checked={selectedStatusOption === "Diagnosed"}
-                onChange={handleStatusOption}
+                type="checkbox"
+                checked={selectedStatusOption.includes("Diagnosed")}
+                onChange={() => handleStatusOption("Diagnosed")}
               />
               <span className="checkmark"></span>
             </label>

@@ -1,32 +1,39 @@
 import "./datatable.css";
 
 export const listColumns = [
+  { field: "index", 
+    headerName: "No.", 
+    width: 50, 
+    headerClassName: 'index-header',
+    cellClassName: 'index-cell',
+  },
+
   { field: "PatientID", 
     headerName: "Patient ID", 
     width: 130 ,
     headerClassName: 'id-header',
-  cellClassName: 'id-cell',
+    cellClassName: 'id-cell',
   },
   {
     field: "Name",
     headerName: "Name",
     width: 220,
     headerClassName: 'name-header',
-  cellClassName: 'name-cell',
+    cellClassName: 'name-cell',
   },
   {
     field: "Age",
-  headerName: "Age",
-  width: 100,
-  headerClassName: 'age-header',
-  cellClassName: 'age-cell',
+    headerName: "Age",
+    width: 100,
+    headerClassName: 'age-header',
+    cellClassName: 'age-cell',
   },
   {
       field: "Gender",
       headerName: "Gender",
       width: 120,
       headerClassName: 'gender-header',
-  cellClassName: 'gender-cell',
+    cellClassName: 'gender-cell',
   },
   {
     field: "Date",
@@ -34,14 +41,14 @@ export const listColumns = [
     width: 150,
     renderCell: (params) => formatDate(params.value) ,
     headerClassName: 'date-header',
-  cellClassName: 'date-cell',
+    cellClassName: 'date-cell',
   },
   {
       field: "Score",
       headerName: "PHQ-9 Score",
       width: 150,
       headerClassName: 'score-header',
-  cellClassName: 'score-cell',
+    cellClassName: 'score-cell',
   },
 
   {
