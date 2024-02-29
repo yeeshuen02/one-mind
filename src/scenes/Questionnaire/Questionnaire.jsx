@@ -1,12 +1,57 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import "../../scenes/Questionnaire/Questionnaire.css";
 import Question from "./Question.jsx";
 import { QUESTION } from "./questionData.js";
 import homePageOneMindLogo from "../../assets/logo-blue.png";
+import { updateDoc, doc, getDoc } from "firebase/firestore";
+import { db } from "../../config/firebase";
 
 function Questionnaire() {
   const navigate = useNavigate();
+  const location = useLocation();
+  const { patientID } = location.state;
+  const [score, setScore] = useState(Array(QUESTION.length).fill(0));
+  const [questionCompletion, setQuestionCompletion] = useState(Array(QUESTION.length).fill(false));
+
+  const handleOptionSelected = (index, value) =>{
+    const newScore = [...score];
+    newScore[index] = value;
+    setScore(newScore)
+
+    const newQuestionCompletion = [...questionCompletion];
+    newQuestionCompletion[index] = true; 
+    setQuestionCompletion(newQuestionCompletion);
+  };
+
+  const allQuestionsAnswered = () => {
+    return questionCompletion.every((answered) => answered);
+  };
+
+  const calculateTotalScore = () =>{
+    return score.reduce((acc,score) => acc + score, 0)
+  }
+
+  const handleScore = async () => {
+    const totalScore = calculateTotalScore();
+    const patientRef = doc(db, "PatientList", patientID);
+    try {
+      const patientDocSnapshot = await getDoc(patientRef);
+      
+      if (allQuestionsAnswered() && patientDocSnapshot.exists()) {
+        await updateDoc(patientRef, {
+        Score: totalScore,
+        });
+        console.log("Scores updated successfully for patientID:", patientID);
+        navigate("/homepage");
+      } else {
+        alert("Please answer all questions before submitting.");
+      }
+    } catch (error) {
+      console.error("Error updating scores:", error);
+    }
+    navigate("/upload")
+  };
 
   return (
     <section>
@@ -57,8 +102,10 @@ function Questionnaire() {
 
       <div className="ques-button-container">
         <>
-          {QUESTION.map((question) => (
-            <Question key={question.ques} {...question} />
+          {QUESTION.map((question,index) => (
+            <Question 
+            key={question.ques} {...question} 
+            saveOptionselected={(value) => handleOptionSelected(index, value)}/>
           ))}
         </>
 
@@ -66,7 +113,7 @@ function Questionnaire() {
           <button className="back" onClick={() => navigate("/consent")}>
             Back
           </button>
-          <button className="proceed">Submit</button>
+          <button className="proceed" onClick={handleScore}>Submit</button>
         </div>
       </div>
     </section>

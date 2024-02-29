@@ -48,13 +48,18 @@ const Homepage = () => {
   const handleDateChange = (event) => {
     setSelectedDate(event.target.value);
   };
- 
-  //filter gender 
+  
+// filter gender
   const [selectedGenderOption, setSelectedGenderOption] = useState("");
-  const handleGenderOption = (event) => {
-    setSelectedGenderOption(event.target.value);
-  };
- 
+  const handleGenderOption = (value) => {
+      setSelectedGenderOption((prevOptions) => {
+      if (prevOptions.includes(value)) {
+        return prevOptions.filter((option) => option !== value);
+      } else {
+        return [...prevOptions, value];
+      }
+    });  }
+
   //filter phq9 score
   const [filterScore, setfilterScore] = useState("");
   const handleFilterScore = (event) => {
@@ -63,15 +68,27 @@ const Homepage = () => {
  
   //filter status
   const [selectedStatusOption, setSelectedStatusOption] = useState("");
-  const handleStatusOption = (event) => {
-    setSelectedStatusOption(event.target.value);
-  };
+  const handleStatusOption = (value) => {
+    setSelectedStatusOption((prevOptions) => {
+    if (prevOptions.includes(value)) {
+      return prevOptions.filter((option) => option !== value);
+    } else {
+      return [...prevOptions, value];
+    }
+  });  }
 
   //the statistics
   const [totalAmount, setTotalAmount] = useState(null);
   const [totalPerc, setforTotalPerc] = useState(null);
   const [inReviewAmount, setInReviewAmount] = useState(null);
   const [diagnosedAmount, setDiagnosedAmount] = useState(null);
+
+
+  const HorizontalLine = () => {
+    return (
+      <div className="horizontal-line"></div>
+    );
+  }
 
   useEffect(() => {
     const fetchData = async () => {
@@ -157,6 +174,8 @@ const Homepage = () => {
               value={search} 
               onChange={handleSearch}/>
           </div>
+            <HorizontalLine />
+
           <div className="age-block">
             <div className="age-search">
               <img src={ageIcon} alt="search Logo" />
@@ -177,6 +196,8 @@ const Homepage = () => {
               <option value="70-80">70-80</option>
             </select>
           </div>
+          <HorizontalLine />
+
           <div className="date-block">
             <div className="date-search">
               <img src={dateIcon} alt="search Logo" />
@@ -187,36 +208,40 @@ const Homepage = () => {
               value={selectedDate} 
               onChange={handleDateChange} />
           </div>
+          <HorizontalLine />
 
           <div className="gender-block">
-            <div className="gender-search">
-              <img src={genderIcon} alt="gender Logo" />
-              <p>Gender</p>
-            </div>
-            <label className="gender-radio">
-              Male
-              <input
-                type="radio"
-                value="Male"
-                checked={selectedGenderOption === "Male"}
-                onChange={handleGenderOption}
-              />
-              <span className="checkmark"></span>
-            </label>
- 
-            <label className="gender-radio">
-              Female
-              <input
-                value="Female"
-                type="radio"
-                checked={selectedGenderOption === "Female"}
-                onChange={handleGenderOption}
-              />
-              <span className="checkmark"></span>
-            </label>
+      <div className="gender-search">
+        <img src={genderIcon} alt="gender Logo" />
+        <p>Gender</p>
+      </div>
+      
+      <label className="gender-checkbox">
+        Male
+        <input
+          type="checkbox"
+          value="Male"
+          checked={selectedGenderOption.includes("Male")}
+          onChange={() => handleGenderOption("Male")}
+        />
+        <span className="checkmark"></span>
+      </label>
 
-            {/* <p>Selected option: {selectedOption}</p> */}
-          </div>
+      <label className="gender-checkbox">
+        Female
+        <input
+          type="checkbox"
+          value="Female"
+          checked={selectedGenderOption.includes("Female")}
+          onChange={() => handleGenderOption("Female")}
+        />
+        <span className="checkmark"></span>
+      </label>
+    </div>
+
+          
+          <HorizontalLine />
+
           <div className="name-block">
             <div className="name-search">
               <img src={phq9Icon} alt="search Logo" />
@@ -228,35 +253,37 @@ const Homepage = () => {
               value={filterScore}
               onChange={handleFilterScore}/>
           </div>
+          <HorizontalLine />
+
           <div className="name-block">
             <div className="name-search">
               <img src={statusIcon} alt="search Logo" />
               <p>Status</p>
             </div>
-            <label className="gender-radio">
+            <label className="gender-checkbox">
             In Review
               <input
-                type="radio"
+                type="checkbox"
                 value="In Review"
-                checked={selectedStatusOption === "In Review"}
-                onChange={handleStatusOption}
+                checked={selectedStatusOption.includes("In Review")}
+                onChange={() => handleStatusOption("In Review")}
               />
               <span className="checkmark"></span>
             </label>
  
-            <label className="gender-radio">
+            <label className="gender-checkbox">
               Diagnosed
               <input
                 value="Diagnosed"
-                type="radio"
-                checked={selectedStatusOption === "Diagnosed"}
-                onChange={handleStatusOption}
+                type="checkbox"
+                checked={selectedStatusOption.includes("Diagnosed")}
+                onChange={() => handleStatusOption("Diagnosed")}
               />
               <span className="checkmark"></span>
             </label>
 
-            {/* <p>Selected option: {selectedOption}</p> */}
           </div>
+
         </div>
 
         <div className="home-main-content">

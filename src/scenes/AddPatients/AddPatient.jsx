@@ -55,7 +55,6 @@ const AddPatient = () => {
   const [gender, setGender] = useState("");
   const [occupation, setOccupation] = useState("");
   const [phoneNo, setPhoneNo] = useState("");
-
   const [score, setScore] = useState("");
   const [status, setStatus] = useState("");
 
@@ -79,8 +78,7 @@ const AddPatient = () => {
       await setDoc(counterDocRef, { value: patientCounter + 1 });
 
       setPatientCounter((prevCounter) => prevCounter + 1);
-      console.log("Document written with ID: ", newPatientRef.id);
-      navigate("/consent", { state: { patientID, name } });
+      navigate("/consent", { state: { patientID: newPatientRef.id, name } });
     } catch (err) {
       console.log(err);
     }

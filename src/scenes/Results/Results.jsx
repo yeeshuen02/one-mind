@@ -122,7 +122,7 @@ const Results = () => {
             
         </div>
         <div className='results-content-forth'>
-            <button className='questionnaire-report-button' onClick={() => navigate('/report')}>View Questionnaire Report</button>
+            <button className='questionnaire-report-button' onClick={() => navigate('/upload')}>View Questionnaire Report</button>
 
 
         </div>

@@ -2,8 +2,8 @@
 
 .datatable {
   height: auto;
-  width: 100%;
-  margin-top: 40px;
+  width: auto;
+  margin: 40px 40px 0px 0px;
   background-color: #F2F5F9;
   padding: 30px;
   border-radius: 30px;
@@ -41,14 +41,14 @@
   margin-top: 30px;
 }
 
-    .datagrid .MuiDataGrid-row {
-      background-color: white;
-      border-radius: 10px;
-      align-items: center;
-    }
+.datagrid .MuiDataGrid-row {
+  background-color: white;
+  border-radius: 10px;
+  align-items: center;
+}
     
     
-.id-cell, .name-cell{
+.index-cell, .id-cell, .name-cell{
 font-weight: 900;
 justify-content: center;
 }
@@ -59,13 +59,10 @@ justify-content: center;
   align-items: center;
 
 }
-
-
-
-    .age-header,.id-header,.name-header,.gender-header,.date-header, .score-header, .status-header {
-      font-weight: 900 !important; 
-      font-size: 20px;
-    }
+.age-header,.id-header,.name-header,.gender-header,.date-header, .score-header, .status-header, .index-header {
+  font-weight: 900 !important; 
+  font-size: 20px;
+}
      
      
     
