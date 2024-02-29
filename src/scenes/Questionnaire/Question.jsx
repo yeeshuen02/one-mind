@@ -5,6 +5,7 @@ export default function Question({ ques, options }) {
 
   const handleOptionClick = (index) => {
     setSelectedOption(index);
+    console.log(selectedOption);
   };
 
   return (
