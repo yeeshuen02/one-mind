@@ -21,7 +21,7 @@ const AddPatient = () => {
   useEffect(() => {
     const fetchPatientCounter = async () => {
       try {
-        const counterDocRef = doc(db, "PatientList", "PatientID"); 
+        const counterDocRef = doc(db, "PatientList", "PatientID");
         const counterDocSnapshot = await getDoc(counterDocRef);
 
         if (counterDocSnapshot.exists()) {
@@ -104,10 +104,6 @@ const AddPatient = () => {
 
       <div className="information-container">
         <div className="progress-indicator">
-          {/* <hr className="step-line1" />
-          <div className="step-line2" />
-          <div className="step-line3" /> */}
-
           <div className="progress-element-active">
             <div className="circle-out-active">
               <span>1</span>

@@ -12,15 +12,17 @@ function Questionnaire() {
   const location = useLocation();
   const { patientID, name } = location.state;
   const [score, setScore] = useState(Array(QUESTION.length).fill(0));
-  const [questionCompletion, setQuestionCompletion] = useState(Array(QUESTION.length).fill(false));
+  const [questionCompletion, setQuestionCompletion] = useState(
+    Array(QUESTION.length).fill(false)
+  );
 
-  const handleOptionSelected = (index, value) =>{
+  const handleOptionSelected = (index, value) => {
     const newScore = [...score];
     newScore[index] = value;
-    setScore(newScore)
+    setScore(newScore);
 
     const newQuestionCompletion = [...questionCompletion];
-    newQuestionCompletion[index] = true; 
+    newQuestionCompletion[index] = true;
     setQuestionCompletion(newQuestionCompletion);
   };
 
@@ -28,19 +30,39 @@ function Questionnaire() {
     return questionCompletion.every((answered) => answered);
   };
 
-  const calculateTotalScore = () =>{
-    return score.reduce((acc,score) => acc + score, 0)
-  }
+  const calculateTotalScore = () => {
+    return score.reduce((acc, score) => acc + score, 0);
+  };
+
+  const saveAnswersToFirebase = async () => {
+    const patientRef = doc(db, "PatientList", patientID);
+
+    try {
+      // Update or set the document with answers
+      await updateDoc(
+        patientRef,
+        {
+          Answers: score, // Save the entire array of scores as answers
+        },
+        { merge: true }
+      );
+
+      console.log("Answers saved successfully for patientID:", patientID);
+    } catch (error) {
+      console.error("Error saving answers:", error);
+    }
+  };
 
   const handleScore = async () => {
     const totalScore = calculateTotalScore();
     const patientRef = doc(db, "PatientList", patientID);
+
     try {
       const patientDocSnapshot = await getDoc(patientRef);
-      
-      if (allQuestionsAnswered() && patientDocSnapshot.exists()) {
+      if (allQuestionsAnswered() && patientDocSnapshot.exists) {
+        await saveAnswersToFirebase();
         await updateDoc(patientRef, {
-        Score: totalScore,
+          Score: totalScore,
         });
         console.log("Scores updated successfully for patientID:", patientID);
       } else {
@@ -49,7 +71,11 @@ function Questionnaire() {
     } catch (error) {
       console.error("Error updating scores:", error);
     }
+<<<<<<< HEAD
     navigate("/upload", { state: { patientID, name} })
+=======
+    navigate("/upload");
+>>>>>>> 2e2ac96a89a760e6ca2f228ea505dd5d22696e61
   };
 
   return (
@@ -101,10 +127,12 @@ function Questionnaire() {
 
       <div className="ques-button-container">
         <>
-          {QUESTION.map((question,index) => (
-            <Question 
-            key={question.ques} {...question} 
-            saveOptionselected={(value) => handleOptionSelected(index, value)}/>
+          {QUESTION.map((question, index) => (
+            <Question
+              key={question.ques}
+              {...question}
+              saveOptionselected={(value) => handleOptionSelected(index, value)}
+            />
           ))}
         </>
 
@@ -112,7 +140,9 @@ function Questionnaire() {
           <button className="back" onClick={() => navigate("/consent")}>
             Back
           </button>
-          <button className="proceed" onClick={handleScore}>Submit</button>
+          <button className="proceed" onClick={handleScore}>
+            Submit
+          </button>
         </div>
       </div>
     </section>

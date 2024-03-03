@@ -1,40 +1,34 @@
-
-
 .datatable {
   height: auto;
   width: auto;
-  margin: 40px 40px 0px 0px;
-  background-color: #F2F5F9;
+  background-color: #f2f5f9;
+  margin-top: 40px;
   padding: 30px;
   border-radius: 30px;
 }
-  .datatableTitle {
-    width: 100%;
-    font-size: 30px;
-    margin-bottom: 10px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    font-weight: 900;
-  }
-    .addpatient {
-      text-decoration: none;
-      align-items: center;
-      font-size: 20px;
-      font-weight: bold;
-      background-color: #0f67fe;
-      border-width: 0px;
-      border-radius: 15px;
-      color: white;
-      padding: 15px 25px 15px 25px;
-      width: 190px;
-      cursor: pointer;
-      margin-left: auto;
-    }
-
-
-
-
+.datatableTitle {
+  width: 100%;
+  font-size: 30px;
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-weight: 900;
+}
+.addpatient {
+  text-decoration: none;
+  align-items: center;
+  font-size: 20px;
+  font-weight: bold;
+  background-color: #0f67fe;
+  border-width: 0px;
+  border-radius: 15px;
+  color: white;
+  padding: 15px 25px 15px 25px;
+  width: 190px;
+  cursor: pointer;
+  margin-left: auto;
+}
 
 .datagrid.MuiDataGrid-root {
   border: none;
@@ -46,23 +40,31 @@
   border-radius: 10px;
   align-items: center;
 }
-    
-    
-.index-cell, .id-cell, .name-cell{
-font-weight: 900;
-justify-content: center;
+
+.index-cell,
+.id-cell,
+.name-cell {
+  font-weight: 900;
+  justify-content: center;
 }
 
-.age-cell, .gender-cell,.date-cell, .score-cell, .status-cell{
-  color: #A3A3A3;
+.age-cell,
+.gender-cell,
+.date-cell,
+.score-cell,
+.status-cell {
+  color: #a3a3a3;
   font-weight: 580;
   align-items: center;
-
 }
-.age-header,.id-header,.name-header,.gender-header,.date-header, .score-header, .status-header, .index-header {
-  font-weight: 900 !important; 
+.age-header,
+.id-header,
+.name-header,
+.gender-header,
+.date-header,
+.score-header,
+.status-header,
+.index-header {
+  font-weight: 900 !important;
   font-size: 20px;
 }
-     
-     
-    
