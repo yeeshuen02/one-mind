@@ -66,3 +66,46 @@
     color: #5d6a85;
   }
 }
+
+.report-container {
+  margin-top: 50px;
+}
+
+.report-question-box {
+  display: flex;
+  flex-direction: row;
+  gap: 150px;
+  background-color: #f5f7ff;
+  padding: 100px 5%;
+  justify-content: center;
+  align-items: center;
+  margin: 0px 10% 30px 10%;
+  border-radius: 20px;
+
+  p {
+    color: #a3a3a3;
+    font-weight: bold;
+    font-size: 24px;
+    width: 600px;
+  }
+
+  li {
+    font-size: 24px;
+    font-weight: bold;
+    padding: 10px 3%;
+    width: 320px;
+    margin: 5px 0px;
+    background-color: #f5f7ff;
+    color: #5b75fe;
+    border-color: #5b75fe;
+    border-radius: 20px;
+    border-style: solid;
+    list-style: none;
+    text-align: center;
+  }
+
+  .ans-text {
+    background-color: #5b75fe;
+    color: #f5f7ff;
+  }
+}
