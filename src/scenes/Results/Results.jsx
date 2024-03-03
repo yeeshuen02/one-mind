@@ -1,14 +1,9 @@
-<<<<<<< HEAD
 import React, { useEffect, useState } from 'react';
-=======
-import React, { useState } from "react";
->>>>>>> 2e2ac96a89a760e6ca2f228ea505dd5d22696e61
 import homePageOneMindLogo from "../../assets/logo-blue.png";
 import "./Results.css";
 import modelIcon from "../../assets/cpu-charge.png";
 import clipboardIcon from "../../assets/clipboard-text.png";
 import infoCircleIcon from "../../assets/info-circle.png";
-<<<<<<< HEAD
 import { db } from "../../config/firebase";
 import infoCircleBlueIcon from "../../assets/info-circle-blue.png";
 import { useNavigate, useLocation } from "react-router-dom";
@@ -102,55 +97,35 @@ const Results = () => {
         }
       };
       
-=======
-
-import infoCircleBlueIcon from "../../assets/info-circle-blue.png";
-
-import { useNavigate } from "react-router-dom";
-
-const Results = () => {
-  const navigate = useNavigate();
-
-  const [showText, setShowText] = useState(true);
-
-  const handleButtonClick = () => {
-    setShowText(false);
-  };
->>>>>>> 2e2ac96a89a760e6ca2f228ea505dd5d22696e61
 
   return (
     <section className="results-page">
-      <div className="hero">
-        <div className="top-nav">
-          <button className="homepage-home-button">
-            <img src={homePageOneMindLogo} alt="Homepage" />
-            <p>OneMind</p>
-          </button>
-        </div>
-
-        <div className="hero-content">
-          <h1>Results</h1>
-          <p>Depression Severity Analysis: Unveiling the Impact</p>
-        </div>
+    <div className="hero">
+      <div className="top-nav">
+        <button className="homepage-home-button">
+          <img src={homePageOneMindLogo} alt="Homepage" />
+          <p>OneMind</p>
+        </button>
       </div>
-
-      <div className="results-bottom-section">
-        <div className="resuts-content">
-          <div className="results-content-first">
+      
+      <div className="hero-content">
+        <h1>Results</h1>
+        <p>
+        Depression Severity Analysis: Unveiling the Impact 
+        </p>
+      </div>
+    </div>
+    
+    <div className="results-bottom-section" >
+      <div className="resuts-content">
+        <div className="results-content-first">
             <div className="results-profile">
-<<<<<<< HEAD
-                <p id="patient-id" >{patientDetails.PatientID}</p>
+                <p id="patient-id">{patientDetails.PatientID}</p>
                 <p id="patient-name">{patientDetails.Name}</p>
                 <p id="patient-date">{patientDetails.DateofBirth}</p>
-=======
-              <p id="patient-id">#P03629</p>
-              <p id="patient-name">Allen Matt</p>
-              <p id="patient-date">19.07.2023</p>
->>>>>>> 2e2ac96a89a760e6ca2f228ea505dd5d22696e61
             </div>
-
+            
             <div className="results-details">
-<<<<<<< HEAD
                 <div className="results-details-top-row">
                     <div className='results-gender'>
                         <p>Gender</p>
@@ -176,44 +151,14 @@ const Results = () => {
                     </div>
                     <div className="just-special-for-date">
                         <p>Date</p>
-                        <p  className="patient-details-content">{patientDetails.Date ? new Date(patientDetails.Date.toMillis()).toLocaleDateString() : ''}</p>
+                        <p  class="patient-details-content">{patientDetails.Date ? new Date(patientDetails.Date.toMillis()).toLocaleDateString() : ''}</p>
                     </div>
-=======
-              <div className="results-details-top-row">
-                <div className="results-gender">
-                  <p>Gender</p>
-                  <p class="patient-details-content">Male</p>
                 </div>
-                <div className="results-age">
-                  <p>Age</p>
-                  <p class="patient-details-content">12</p>
->>>>>>> 2e2ac96a89a760e6ca2f228ea505dd5d22696e61
-                </div>
-                <div className="results-clinician">
-                  <p>Clinician</p>
-                  <p class="patient-details-content"> Dr Morge</p>
-                </div>
-              </div>
-              <div className="results-details-bottom-row">
-                <div className="results-phone">
-                  <p>Phone Number</p>
-                  <p class="patient-details-content">0123829018</p>
-                </div>
-                <div className="results-occupation">
-                  <p>Occupation</p>
-                  <p class="patient-details-content">Data Analyst</p>
-                </div>
-                <div className="just-special-for-date">
-                  <p>Date</p>
-                  <p class="patient-details-content"> 15.09.1929</p>
-                </div>
-              </div>
             </div>
-          </div>
-
-          <div className="results-content-second">
+        </div>
+        
+        <div className="results-content-second">
             <div className="second-row-left-right">
-<<<<<<< HEAD
                 <img className="results-icon" src={modelIcon} alt="search Logo" />
                 <p>Model Analysis:</p>
                 <div className="text-background"> <p>{modelAnalysis?.result_class || 'Loading...'}</p></div>
@@ -222,42 +167,19 @@ const Results = () => {
                 <img className="results-icon" src={clipboardIcon} alt="search Logo" />
                 <p>PHQ-9 Severity:</p>
                 <div className="text-background"> <p>{calculateSeverity(patientDetails?.Score || 0)}</p></div>
-=======
-              <img className="results-icon" src={modelIcon} alt="search Logo" />
-              <p>Model Analysis:</p>
-              <div className="text-background">
-                {" "}
-                <p>Healthy</p>
-              </div>
             </div>
-            <div className="second-row-left-right">
-              <img
-                className="results-icon"
-                src={clipboardIcon}
-                alt="search Logo"
-              />
-              <p>PHQ-9 Severity:</p>
-              <div className="text-background">
-                {" "}
-                <p>Dummy</p>
-              </div>
->>>>>>> 2e2ac96a89a760e6ca2f228ea505dd5d22696e61
-            </div>
-          </div>
+        </div>
+        
+        <div className="results-content-third">
 
-          <div className="results-content-third">
-            {showText ? (
-              <div className="before-confirming">
-                <img src={infoCircleIcon} alt="search Logo" />
+                {showText ? (
+                        <div className='before-confirming'>
+                            <img src={infoCircleIcon} alt="search Logo" />
 
-                <p>Please confirm the validity of the results by clicking</p>
-                <button
-                  className="results-confirm-button"
-                  onClick={handleButtonClick}
-                >
-                  here
+                        <p>Please confirm the validity of the results by clicking</p>
+                        <button className="results-confirm-button" onClick={handleButtonClick}>
+                    here
                 </button>
-<<<<<<< HEAD
                     </div>
                 ) : (
                     <div className='after-confirming'>
@@ -273,29 +195,13 @@ const Results = () => {
             
         </div>
         <div className='results-content-forth'>
-            <button className='questionnaire-report-button' onClick={() => navigate('/report')}>View Questionnaire Report</button>
-=======
-              </div>
-            ) : (
-              <div className="after-confirming">
-                <img src={infoCircleBlueIcon} alt="search Logo" />
-                <p>Results has been confirmed</p>
-                {/* Add additional content as needed */}
-              </div>
-            )}
-          </div>
-          <div className="results-content-forth">
-            <button
-              className="questionnaire-report-button"
-              onClick={() => navigate("/report")}
-            >
-              View Questionnaire Report
-            </button>
-          </div>
->>>>>>> 2e2ac96a89a760e6ca2f228ea505dd5d22696e61
+            <button className='questionnaire-report-button' onClick={() => navigate('/upload')}>View Questionnaire Report</button>
+
+
         </div>
       </div>
-    </section>
+    </div>
+  </section>
   );
 };
 
