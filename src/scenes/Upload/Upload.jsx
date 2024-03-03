@@ -1,12 +1,16 @@
-import React, {useState} from "react";
+import React, {useState, useRef} from "react";
+import { useNavigate, useLocation } from "react-router-dom";
 import homePageOneMindLogo from "../../assets/logo-blue.png";
 import "./Upload.css";
 import uploadLogo from "../../assets/Upload.png";
 
 
 const Upload = () => {
-
+  const navigate = useNavigate();
+  const location = useLocation();  
+  const { patientID, name } = location.state;
   const [selectedFile, setSelectedFile] = useState(null);
+  
 
   const handleFileChange = (event) => {
     setSelectedFile(event.target.files[0]);
@@ -31,7 +35,7 @@ const Upload = () => {
           console.error("Error:", error);
         });
     }
-    //navigate("/results", { state: { patientID, name } });
+    navigate("/results", { state: { patientID } });
   };
 
   return (
@@ -86,7 +90,14 @@ const Upload = () => {
             <img src={uploadLogo} alt="Homepage" />
             <p>Drag & Drop</p>
             <p className="or-text">OR</p>
-            <input type="file" className="browse-file" onChange={handleFileChange}/> 
+            <label className="browse-file"> Browse File
+            <input 
+              type="file" 
+              accept=".edf" 
+              id="edfFile" 
+              onChange={handleFileChange} 
+              style={{ display: "none" }}/> 
+            </label>
         </div>
         <div className="upload-right-side">
             <h1>Upload EEG Recordings</h1>
