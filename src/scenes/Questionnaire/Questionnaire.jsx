@@ -71,11 +71,7 @@ function Questionnaire() {
     } catch (error) {
       console.error("Error updating scores:", error);
     }
-<<<<<<< HEAD
     navigate("/upload", { state: { patientID, name} })
-=======
-    navigate("/upload");
->>>>>>> 2e2ac96a89a760e6ca2f228ea505dd5d22696e61
   };
 
   return (
