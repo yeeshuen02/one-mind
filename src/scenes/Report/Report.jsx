@@ -1,5 +1,7 @@
 import React from "react";
 import homePageOneMindLogo from "../../assets/logo-blue.png";
+import personalCard from "../../assets/personalcard.png";
+import patientId from "../../assets/patientid.png";
 import "../Report/Report.css";
 
 const Report = () => {
@@ -12,9 +14,18 @@ const Report = () => {
             <p>OneMind</p>
           </button>
         </div>
-        <div className="hero-content">
+        <div className="hero-content-result">
           <h1>Result</h1>
-          <p>Name</p>
+          <div className="patient-info-result">
+            <div className="info-result-item">
+              <img src={personalCard} alt="Name" />
+              <p>Allen Matt</p>
+            </div>
+            <div className="info-result-item">
+              <img src={patientId} alt="Patient ID" />
+              <p>P123456</p>
+            </div>
+          </div>
         </div>
       </div>
 
