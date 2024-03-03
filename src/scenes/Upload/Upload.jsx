@@ -1,15 +1,40 @@
-import React from "react";
+import React, {useState} from "react";
 import homePageOneMindLogo from "../../assets/logo-blue.png";
 import "./Upload.css";
 import uploadLogo from "../../assets/Upload.png";
 
 
-
-
 const Upload = () => {
-  return (
 
-    
+  const [selectedFile, setSelectedFile] = useState(null);
+
+  const handleFileChange = (event) => {
+    setSelectedFile(event.target.files[0]);
+  };
+
+  const handleUpload = () => {
+    if (selectedFile) {
+      //using the api to upload file
+      const formData = new FormData();
+      formData.append("file", selectedFile);
+
+      fetch("http://127.0.0.1:5000/api/upload", {
+        method: "POST",
+        body: formData,
+      })
+        .then((response) => response.json())
+        .then((data) => {
+          // Handle the response from the server
+          console.log(data);
+        })
+        .catch((error) => {
+          console.error("Error:", error);
+        });
+    }
+    //navigate("/results", { state: { patientID, name } });
+  };
+
+  return (
     <div className="upload-page">
         <div className="hero">
         <div className="top-nav">
@@ -57,18 +82,16 @@ const Upload = () => {
         </div>
     </div>
     <div className="upload-section">
-
         <div className="drag-drop">
             <img src={uploadLogo} alt="Homepage" />
             <p>Drag & Drop</p>
             <p className="or-text">OR</p>
-            <button className="browse-file"> Browse File</button>
-
+            <input type="file" className="browse-file" onChange={handleFileChange}/> 
         </div>
         <div className="upload-right-side">
             <h1>Upload EEG Recordings</h1>
             <p>Select files from device</p>
-            <button>
+            <button onClick={handleUpload}>
                 Upload &rarr;
             </button>
         </div>
