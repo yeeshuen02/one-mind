@@ -3,6 +3,7 @@ import { DataGrid } from "@mui/x-data-grid";
 import { listColumns } from "./datatablesource";
 import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { collection, deleteDoc, doc, onSnapshot } from "firebase/firestore";
 import { db } from "../../config/firebase";
 import AddPatient from "../AddPatients/AddPatient";
@@ -19,6 +20,12 @@ const Datatable = ({
 }) => {
   const [data, setData] = useState([]);
   const [originalData, setOriginalData] = useState([]);
+  const navigate = useNavigate();
+
+  const handleRowClick = (params) => {
+    const patientID = params.row.PatientID;
+    navigate(`/results/${patientID}`);
+  };
 
   useEffect(() => {
     //Listen to realtime data
@@ -153,6 +160,7 @@ const Datatable = ({
         className="datagrid"
         rows={data}
         columns={listColumns.concat(actionColumn)}
+        onRowClick={handleRowClick}
         initialState={{
           ...data.initialState,
           pagination: { paginationModel: { pageSize: 8 } },

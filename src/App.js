@@ -10,7 +10,6 @@ import Results from "./scenes/Results/Results";
 import Report from "./scenes/Report/Report";
 import Upload from "./scenes/Upload/Upload";
 
-
 function App() {
   return (
     <Routes basename="/app">
@@ -21,11 +20,10 @@ function App() {
       <Route path="/consent" element={<ConsentForm />} />
       <Route path="/questionnaire" element={<Questionnaire />} />
       <Route path="/results" element={<Results />} />
-      {/* <Route path="/result/:patientID" element={<Results />}  /> */}
+      <Route path="/results/:patientID" element={<Results />} />
       <Route path="/upload" element={<Upload />} />
       <Route path="/report" element={<Report />} />
-
-
+      <Route path="/report/:patientID" element={<Report />} />
     </Routes>
   );
 }

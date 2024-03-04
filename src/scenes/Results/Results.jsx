@@ -6,14 +6,12 @@ import clipboardIcon from "../../assets/clipboard-text.png";
 import infoCircleIcon from "../../assets/info-circle.png";
 import { db } from "../../config/firebase";
 import infoCircleBlueIcon from "../../assets/info-circle-blue.png";
-import { useNavigate, useLocation } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { doc, getDoc } from "firebase/firestore";
-import { Link } from "react-router-dom";
 
 const Results = () => {
   const navigate = useNavigate();
-  const location = useLocation();
-  const { patientID } = location.state;
+  let { patientID } = useParams();
   console.log("Patient ID:", patientID);
   const [showText, setShowText] = useState(true);
   const [patientDetails, setPatientDetails] = useState({});
@@ -213,7 +211,7 @@ const Results = () => {
           <div className="results-content-forth">
             <button
               className="questionnaire-report-button"
-              onClick={() => navigate("/report", { state: { patientID } })}
+              onClick={() => navigate(`/report/${patientID}`)}
             >
               View Questionnaire Report
             </button>

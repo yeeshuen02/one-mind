@@ -1,18 +1,15 @@
 import { useEffect, useState } from "react";
-import { useNavigate, useLocation } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { db } from "../../config/firebase";
 import { doc, getDoc } from "firebase/firestore";
 import homePageOneMindLogo from "../../assets/logo-blue.png";
 import personalCard from "../../assets/personalcard.png";
 import patientId from "../../assets/patientid.png";
 import "../Report/Report.css";
-// import ReportAnswer from "./ReportAnswer";
-// import { REPORT } from "./reportData.js";
 
 const Report = () => {
   const navigate = useNavigate();
-  const location = useLocation();
-  const { patientID } = location.state;
+  let { patientID } = useParams();
   console.log("Patient ID:", patientID);
   const [patientDetails, setPatientDetails] = useState({});
   const [loading, setLoading] = useState(true);
@@ -210,7 +207,7 @@ const Report = () => {
 
         <button
           className="back-result"
-          onClick={() => navigate("/results", { state: { patientID } })}
+          onClick={() => navigate(`/results/${patientID}`)}
         >
           Back to Result
         </button>

@@ -61,7 +61,8 @@ const AddPatient = () => {
   const handleAdd = async (e) => {
     e.preventDefault();
     try {
-      const newPatientRef = await addDoc(collection(db, "PatientList"), {
+      const newPatientRef = doc(db, "PatientList", patientID);
+      await setDoc(newPatientRef, {
         PatientID: patientID,
         Name: name,
         DateofBirth: dob,
