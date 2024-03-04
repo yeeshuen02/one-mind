@@ -202,36 +202,6 @@ const AddPatient = () => {
             </div>
           </div>
 
-          {/* <div>
-            <input
-              type="text"
-              placeholder="Patient ID"
-              onChange={(e) => setPatientID(e.target.value)}
-              value={patientID}
-              required
-            />
-          </div> 
-
-          <div>
-            <input
-              type="number"
-              placeholder="Score"
-              onChange={(e) => setScore(e.target.value)}
-              value={score}
-              required
-            />
-          </div>
-
-          <div>
-            <input
-              type="text"
-              placeholder="Status"
-              onChange={(e) => setStatus(e.target.value)}
-              value={status}
-              required
-            />
-          </div> */}
-
           <div className="nav-buttons">
             <button
               className="back"

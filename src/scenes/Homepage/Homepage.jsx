@@ -149,12 +149,6 @@ const Homepage = () => {
             <img src={homePageOneMindLogo} alt="search Logo" />
             <p>OneMind</p>
           </button>
-          <button
-            className="get-started-button"
-            onClick={() => navigate("/results")}
-          >
-            To results page for now
-          </button>
         </div>
         <div className="homepage-right-side">
           <div className="user-icon">

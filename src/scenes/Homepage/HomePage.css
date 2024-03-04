@@ -1,6 +1,7 @@
 .top-nav {
   display: flex;
   justify-content: space-between;
+  padding-top: 30px;
 }
 
 /* .homepage-home-button {
@@ -21,6 +22,7 @@
   border: 0cm;
   background-color: transparent;
   display: flex;
+  gap: 10px;
 }
 
 .homepage-right-side {

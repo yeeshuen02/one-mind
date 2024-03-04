@@ -99,9 +99,12 @@ const Results = () => {
 
   return (
     <section className="results-page">
-      <div className="hero">
+      <div className="hero-result">
         <div className="top-nav">
-          <button className="homepage-home-button">
+          <button
+            className="homepage-home-button"
+            onClick={() => navigate("/homepage")}
+          >
             <img src={homePageOneMindLogo} alt="Homepage" />
             <p>OneMind</p>
           </button>
