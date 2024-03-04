@@ -44,7 +44,7 @@
 
 .filter-bar {
   display: flex;
-  width: 300px;
+  width: 400px;
   height: 100%;
   background-color: #5b75fe;
   padding: 50px 0px 50px 0px;
@@ -137,7 +137,7 @@
   flex-direction: column;
   justify-content: center;
   padding: 20px 3%;
-  gap: 10px;
+  gap: 5px;
 }
 
 .in-review-header {
@@ -147,8 +147,8 @@
   gap: 30px;
 
   img {
-    width: 80px;
-    height: 80px;
+    width: 100px;
+    height: 100px;
     margin: 0;
   }
 }
