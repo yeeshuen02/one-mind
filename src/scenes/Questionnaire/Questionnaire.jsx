@@ -10,7 +10,7 @@ import { db } from "../../config/firebase";
 function Questionnaire() {
   const navigate = useNavigate();
   const location = useLocation();
-  const { patientID } = location.state;
+  const { patientID, name } = location.state;
   const [score, setScore] = useState(Array(QUESTION.length).fill(0));
   const [questionCompletion, setQuestionCompletion] = useState(
     Array(QUESTION.length).fill(false)
@@ -65,14 +65,13 @@ function Questionnaire() {
           Score: totalScore,
         });
         console.log("Scores updated successfully for patientID:", patientID);
-        navigate("/homepage");
       } else {
         alert("Please answer all questions before submitting.");
       }
     } catch (error) {
       console.error("Error updating scores:", error);
     }
-    navigate("/upload");
+    navigate("/upload", { state: { patientID, name} })
   };
 
   return (

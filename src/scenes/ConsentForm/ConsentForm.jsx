@@ -26,7 +26,7 @@ function ConsentForm() {
           ConsentGiven: true,
         });
 
-        navigate("/questionnaire", { state: { patientID} });
+        navigate("/questionnaire", { state: { patientID, name} });
       } catch (error) {
         console.error("Error adding consent document:", error);
         alert("An error occurred. Please try again later.");

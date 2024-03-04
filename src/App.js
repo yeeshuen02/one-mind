@@ -21,6 +21,7 @@ function App() {
       <Route path="/consent" element={<ConsentForm />} />
       <Route path="/questionnaire" element={<Questionnaire />} />
       <Route path="/results" element={<Results />} />
+      {/* <Route path="/result/:patientID" element={<Results />}  /> */}
       <Route path="/upload" element={<Upload />} />
       <Route path="/report" element={<Report />} />
 

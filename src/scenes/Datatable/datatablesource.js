@@ -1,4 +1,5 @@
 import "./datatable.css";
+import { Link } from 'react-router-dom';
 
 export const listColumns = [
   { field: "index", 
@@ -13,6 +14,11 @@ export const listColumns = [
     width: 130 ,
     headerClassName: 'id-header',
     cellClassName: 'id-cell',
+  //   renderCell: (params) => (
+  //     <Link to={{ pathname: `/result/${params.value}`, state: { patientID: params.value } }}>
+  //     {params.value}
+  //   </Link>
+  //   ),
   },
   {
     field: "Name",
