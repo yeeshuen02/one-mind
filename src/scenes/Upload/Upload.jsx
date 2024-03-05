@@ -9,6 +9,7 @@ const Upload = () => {
   const location = useLocation();
   const { patientID, name } = location.state;
   const [selectedFile, setSelectedFile] = useState(null);
+  
 
   const handleFileChange = (event) => {
     setSelectedFile(event.target.files[0]);
@@ -28,12 +29,14 @@ const Upload = () => {
         .then((data) => {
           // Handle the response from the server
           console.log(data);
+          setTimeout(() => {
+            navigate(`/results/${patientID}`);
+          }, 5000);
         })
         .catch((error) => {
           console.error("Error:", error);
         });
     }
-    navigate(`/results/${patientID}`);
   };
 
   return (

@@ -12,7 +12,6 @@ import { doc, getDoc } from "firebase/firestore";
 const Results = () => {
   const navigate = useNavigate();
   let { patientID } = useParams();
-  console.log("Patient ID:", patientID);
   const [showText, setShowText] = useState(true);
   const [patientDetails, setPatientDetails] = useState({});
   const [modelAnalysis, setModelAnalysis] = useState({});
@@ -160,7 +159,7 @@ const Results = () => {
                       ? new Date(
                           patientDetails.Date.toMillis()
                         ).toLocaleDateString()
-                      : ""}
+              : ""}
                   </p>
                 </div>
               </div>
