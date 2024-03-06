@@ -6,7 +6,7 @@ const AuthContext = React.createContext();
 
 export function AuthProvider({children}){
     const [user, setUser] = useState(null)
-    // const [loading, setLoading] = useState(true);
+    const [loading, setLoading] = useState(true);
 
     function logIn(email, pwd){
         console.log("email", email)
@@ -15,7 +15,8 @@ export function AuthProvider({children}){
 
     useEffect(()=>{
         const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
-        setUser(currentUser)
+            setLoading(false)
+            setUser(currentUser)
     })
     return ()=>{
         unsubscribe();
@@ -23,7 +24,7 @@ export function AuthProvider({children}){
     },[])
 
     return(
-        <AuthContext.Provider value={{user, logIn}}>
+        <AuthContext.Provider value={{user, logIn, loading}}>
             {children}
         </AuthContext.Provider>
     )

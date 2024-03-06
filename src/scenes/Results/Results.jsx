@@ -18,22 +18,33 @@ const Results = () => {
 
   const handleButtonClick = async () => {
     const userConfirmed = window.confirm(
-      "Please be advised that once the validity of result is confirmed, the action cannot be undone. Would you still like to confirm the result?"
+      "Please confirm the validity of the results by entering the patient ID and selecting the result."
     );
+  
     if (userConfirmed) {
-      try {
-        const response = await fetch("http://127.0.0.1:5000/api/move_files", {
-          method: "POST",
-        });
-
-        if (response.ok) {
-          console.log("Results confirmed and files moved successfully");
-          setShowText(false);
-        } else {
-          console.error("Error confirming results");
+      const patientIdInput = prompt("Enter the patient ID:");
+      const resultConfirmation = prompt("Enter 'positive' or 'negative' to confirm the result:");
+  
+      // Check if the entered patient ID matches the actual patient ID
+      if (patientIdInput === patientDetails.PatientID) {
+        const apiUrl = `http://localhost:5000/api/confirmDiagnosis?patient_id=${patientIdInput}&diagnosis=${resultConfirmation}`;
+  
+        try {
+          const response = await fetch(apiUrl, {
+            method: "POST",
+          });
+  
+          if (response.ok) {
+            console.log("Results confirmed successfully");
+            setShowText(false);
+          } else {
+            console.error("Error confirming results");
+          }
+        } catch (error) {
+          console.error("Error confirming results:", error);
         }
-      } catch (error) {
-        console.error("Error confirming results:", error);
+      } else {
+        alert("Patient ID does not match. Please try again.");
       }
     }
   };
