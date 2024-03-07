@@ -205,6 +205,7 @@ const Homepage = () => {
             </div>
             <input 
               type="date"  
+              id="dropdown"
               value={selectedDate} 
               onChange={handleDateChange} />
           </div>
