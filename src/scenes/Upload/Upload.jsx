@@ -9,7 +9,6 @@ const Upload = () => {
   const location = useLocation();
   const { patientID, name } = location.state;
   const [selectedFile, setSelectedFile] = useState(null);
-  
 
   const handleFileChange = (event) => {
     setSelectedFile(event.target.files[0]);
@@ -21,14 +20,14 @@ const Upload = () => {
       const formData = new FormData();
       formData.append("file", selectedFile);
 
-      fetch("http://127.0.0.1:5000/api/upload", {
+      fetch("/api/upload", {
         method: "POST",
         body: formData,
       })
         .then((response) => response.json())
         .then((data) => {
           // Handle the response from the server
-          console.log(data);
+          console.log("Server Response:", data);
           setTimeout(() => {
             navigate(`/results/${patientID}`);
           }, 5000);

@@ -27,19 +27,17 @@ const Results = () => {
   
       // Check if the entered patient ID matches the actual patient ID
       if (patientIdInput === patientDetails.PatientID) {
-        const apiUrl = `http://localhost:5000/api/confirmDiagnosis?patient_id=${patientIdInput}&diagnosis=${resultConfirmation}`;
-  
         try {
-          const response = await fetch(apiUrl, {
-            method: "POST",
+          const response = await fetch(`/api/confirmDiagnosis?patient_id=${patientIdInput}&diagnosis=${resultConfirmation}`, {
+            method: "POST"
           });
   
           if (response.ok) {
             console.log("Results confirmed successfully");
             setShowText(false);
           } else {
-            console.error("Error confirming results");
-          }
+            const errorMessage = await response.text();
+            console.error("Error confirming results:", errorMessage);          }
         } catch (error) {
           console.error("Error confirming results:", error);
         }
@@ -68,18 +66,18 @@ const Results = () => {
     };
 
     //get model anlysis frm backend
-    const fetchModelAnalysis = async (formData) => {
+    const fetchModelAnalysis = async () => {
       try {
         const response = await fetch("http://127.0.0.1:5000/api/upload", {
-          method: "POST",
-          body: formData,
+          method: "GET"
         });
 
         if (response.ok) {
           const modelAnalysisData = await response.json();
-          setModelAnalysis(modelAnalysisData);
+          console.log("Model Analysis Data:", modelAnalysisData);
+          setModelAnalysis(modelAnalysisData.result_class);
         } else {
-          console.error("Error fetching model analysis");
+          console.error("Error fetching model analysis", response.statusText);
         }
       } catch (error) {
         console.error("Error fetching model analysis:", error);
@@ -139,33 +137,33 @@ const Results = () => {
               <div className="results-details-top-row">
                 <div className="results-gender">
                   <p>Gender</p>
-                  <p class="patient-details-content">{patientDetails.Gender}</p>
+                  <p className="patient-details-content">{patientDetails.Gender}</p>
                 </div>
                 <div className="results-age">
                   <p>Age</p>
-                  <p class="patient-details-content">{patientDetails.Age}</p>
+                  <p className="patient-details-content">{patientDetails.Age}</p>
                 </div>
                 <div className="results-clinician">
                   <p>Clinician</p>
-                  <p class="patient-details-content"> Dr Morge</p>
+                  <p className="patient-details-content"> Dr Morge</p>
                 </div>
               </div>
               <div className="results-details-bottom-row">
                 <div className="results-phone">
                   <p>Phone Number</p>
-                  <p class="patient-details-content">
+                  <p className="patient-details-content">
                     {patientDetails.PhoneNumber}
                   </p>
                 </div>
                 <div className="results-occupation">
                   <p>Occupation</p>
-                  <p class="patient-details-content">
+                  <p className="patient-details-content">
                     {patientDetails.Occupation}
                   </p>
                 </div>
                 <div className="just-special-for-date">
                   <p>Date</p>
-                  <p class="patient-details-content">
+                  <p className="patient-details-content">
                     {patientDetails.Date
                       ? new Date(
                           patientDetails.Date.toMillis()
@@ -183,7 +181,7 @@ const Results = () => {
               <p>Model Analysis:</p>
               <div className="text-background">
                 {" "}
-                <p>{modelAnalysis?.result_class || "Loading..."}</p>
+                <p>{modelAnalysis.result_class}</p>
               </div>
             </div>
             <div className="second-row-left-right">

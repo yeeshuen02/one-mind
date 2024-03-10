@@ -15,7 +15,6 @@ const LoginForm = () => {
   const [pwd, setPwd] = useState("");
   const [errMsg, setErrMsg] = useState("");
   const {logIn} = useAuth();
-  const [loading, setLoading] = useState(false)
 
   const navigate = useNavigate();
 

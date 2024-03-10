@@ -1,18 +1,15 @@
-import React from 'react'
+import {React, useContext} from 'react'
 import { Navigate } from 'react-router-dom';
 import { useAuth } from './AuthContext';
 
 const PrivateRoute = ({children}) => {
-  let {user, loading} = useAuth();
+  let {user} = useAuth();
   
-  if (loading) {
-    return <p>Loading...</p>; // You can replace this with your loading component
-  }
-
-  if (!user){
-    return <Navigate to="/login" />;
-  }
+  if (!user) {
+    return <Navigate to="/login" replace/>;
+  }else{
     return children;
+  }
 }
 
 export default PrivateRoute
