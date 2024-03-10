@@ -56,8 +56,8 @@ const AddPatient = () => {
   const [occupation, setOccupation] = useState("");
   const [phoneNo, setPhoneNo] = useState("");
   const [score, setScore] = useState("");
-  const [status, setStatus] = useState("");
-
+  const [status, setStatus] = useState("In Review");
+  
   const handleAdd = async (e) => {
     e.preventDefault();
     try {

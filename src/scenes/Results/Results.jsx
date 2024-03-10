@@ -7,7 +7,7 @@ import infoCircleIcon from "../../assets/info-circle.png";
 import { db } from "../../config/firebase";
 import infoCircleBlueIcon from "../../assets/info-circle-blue.png";
 import { useNavigate, useParams } from "react-router-dom";
-import { doc, getDoc } from "firebase/firestore";
+import { doc, getDoc, updateDoc } from "firebase/firestore";
 
 const Results = () => {
   const navigate = useNavigate();
@@ -35,6 +35,9 @@ const Results = () => {
           if (response.ok) {
             console.log("Results confirmed successfully");
             setShowText(false);
+            await updateDoc(doc(db, "PatientList", patientID), {
+              Status: "Diagnosed",
+            });
           } else {
             const errorMessage = await response.text();
             console.error("Error confirming results:", errorMessage);          }
