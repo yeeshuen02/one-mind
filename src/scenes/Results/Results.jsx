@@ -7,34 +7,45 @@ import infoCircleIcon from "../../assets/info-circle.png";
 import { db } from "../../config/firebase";
 import infoCircleBlueIcon from "../../assets/info-circle-blue.png";
 import { useNavigate, useParams } from "react-router-dom";
-import { doc, getDoc } from "firebase/firestore";
+import { doc, getDoc, updateDoc } from "firebase/firestore";
 
 const Results = () => {
   const navigate = useNavigate();
   let { patientID } = useParams();
-  console.log("Patient ID:", patientID);
   const [showText, setShowText] = useState(true);
   const [patientDetails, setPatientDetails] = useState({});
   const [modelAnalysis, setModelAnalysis] = useState({});
 
   const handleButtonClick = async () => {
     const userConfirmed = window.confirm(
-      "Please be advised that once the validity of result is confirmed, the action cannot be undone. Would you still like to confirm the result?"
+      "Please confirm the validity of the results by entering the patient ID and selecting the result."
     );
+  
     if (userConfirmed) {
-      try {
-        const response = await fetch("http://127.0.0.1:5000/api/move_files", {
-          method: "POST",
-        });
-
-        if (response.ok) {
-          console.log("Results confirmed and files moved successfully");
-          setShowText(false);
-        } else {
-          console.error("Error confirming results");
+      const patientIdInput = prompt("Enter the patient ID:");
+      const resultConfirmation = prompt("Enter 'positive' or 'negative' to confirm the result:");
+  
+      // Check if the entered patient ID matches the actual patient ID
+      if (patientIdInput === patientDetails.PatientID) {
+        try {
+          const response = await fetch(`/api/confirmDiagnosis?patient_id=${patientIdInput}&diagnosis=${resultConfirmation}`, {
+            method: "POST"
+          });
+  
+          if (response.ok) {
+            console.log("Results confirmed successfully");
+            setShowText(false);
+            await updateDoc(doc(db, "PatientList", patientID), {
+              Status: "Diagnosed",
+            });
+          } else {
+            const errorMessage = await response.text();
+            console.error("Error confirming results:", errorMessage);          }
+        } catch (error) {
+          console.error("Error confirming results:", error);
         }
-      } catch (error) {
-        console.error("Error confirming results:", error);
+      } else {
+        alert("Patient ID does not match. Please try again.");
       }
     }
   };
@@ -58,18 +69,18 @@ const Results = () => {
     };
 
     //get model anlysis frm backend
-    const fetchModelAnalysis = async (formData) => {
+    const fetchModelAnalysis = async () => {
       try {
         const response = await fetch("http://127.0.0.1:5000/api/upload", {
-          method: "POST",
-          body: formData,
+          method: "GET"
         });
 
         if (response.ok) {
           const modelAnalysisData = await response.json();
-          setModelAnalysis(modelAnalysisData);
+          console.log("Model Analysis Data:", modelAnalysisData);
+          setModelAnalysis(modelAnalysisData.result_class);
         } else {
-          console.error("Error fetching model analysis");
+          console.error("Error fetching model analysis", response.statusText);
         }
       } catch (error) {
         console.error("Error fetching model analysis:", error);
@@ -129,38 +140,38 @@ const Results = () => {
               <div className="results-details-top-row">
                 <div className="results-gender">
                   <p>Gender</p>
-                  <p class="patient-details-content">{patientDetails.Gender}</p>
+                  <p className="patient-details-content">{patientDetails.Gender}</p>
                 </div>
                 <div className="results-age">
                   <p>Age</p>
-                  <p class="patient-details-content">{patientDetails.Age}</p>
+                  <p className="patient-details-content">{patientDetails.Age}</p>
                 </div>
                 <div className="results-clinician">
                   <p>Clinician</p>
-                  <p class="patient-details-content"> Dr Morge</p>
+                  <p className="patient-details-content"> Dr Morge</p>
                 </div>
               </div>
               <div className="results-details-bottom-row">
                 <div className="results-phone">
                   <p>Phone Number</p>
-                  <p class="patient-details-content">
+                  <p className="patient-details-content">
                     {patientDetails.PhoneNumber}
                   </p>
                 </div>
                 <div className="results-occupation">
                   <p>Occupation</p>
-                  <p class="patient-details-content">
+                  <p className="patient-details-content">
                     {patientDetails.Occupation}
                   </p>
                 </div>
                 <div className="just-special-for-date">
                   <p>Date</p>
-                  <p class="patient-details-content">
+                  <p className="patient-details-content">
                     {patientDetails.Date
                       ? new Date(
                           patientDetails.Date.toMillis()
                         ).toLocaleDateString()
-                      : ""}
+              : ""}
                   </p>
                 </div>
               </div>
@@ -173,7 +184,7 @@ const Results = () => {
               <p>Model Analysis:</p>
               <div className="text-background">
                 {" "}
-                <p>{modelAnalysis?.result_class || "Loading..."}</p>
+                <p>{modelAnalysis.result_class}</p>
               </div>
             </div>
             <div className="second-row-left-right">

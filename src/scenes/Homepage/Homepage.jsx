@@ -26,9 +26,11 @@ import {
 } from "firebase/firestore";
 
 import "./HomePage.css";
+import { useAuth } from "../../context/AuthContext";
 
 const Homepage = () => {
   const navigate = useNavigate();
+  const {user} = useAuth();
 
   //search bar
   const [search, setSearch] = useState("");
@@ -148,6 +150,7 @@ const Homepage = () => {
           <button className="homepage-home-button">
             <img src={homePageOneMindLogo} alt="search Logo" />
             <p>OneMind</p>
+            {/* {user && user.email} this is for the side bar account user */}
           </button>
         </div>
         <div className="homepage-right-side">

@@ -65,13 +65,13 @@ function Questionnaire() {
           Score: totalScore,
         });
         console.log("Scores updated successfully for patientID:", patientID);
+        navigate("/upload", { state: { patientID, name} })
       } else {
         alert("Please answer all questions before submitting.");
       }
     } catch (error) {
       console.error("Error updating scores:", error);
     }
-    navigate("/upload", { state: { patientID, name} })
   };
 
   return (

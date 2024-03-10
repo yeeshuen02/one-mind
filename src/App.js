@@ -9,22 +9,26 @@ import Questionnaire from "./scenes/Questionnaire/Questionnaire";
 import Results from "./scenes/Results/Results";
 import Report from "./scenes/Report/Report";
 import Upload from "./scenes/Upload/Upload";
+import { AuthProvider } from "./context/AuthContext";
+import PrivateRoute from "./context/PrivateRoute";
 
 function App() {
   return (
-    <Routes basename="/app">
-      <Route path="/" element={<LandingPage />} />
-      <Route path="/login" element={<LoginContainer />} />
-      <Route path="/homepage" element={<Homepage />} />
-      <Route path="/addpatient" element={<AddPatient />} />
-      <Route path="/consent" element={<ConsentForm />} />
-      <Route path="/questionnaire" element={<Questionnaire />} />
-      <Route path="/results" element={<Results />} />
-      <Route path="/results/:patientID" element={<Results />} />
-      <Route path="/upload" element={<Upload />} />
-      <Route path="/report" element={<Report />} />
-      <Route path="/report/:patientID" element={<Report />} />
-    </Routes>
+    <AuthProvider>
+        <Routes> //basename="/app"
+          <Route path="/" element={<LandingPage />} />
+          <Route path="/login" element={<LoginContainer />} />
+          <Route path="/homepage" element={<PrivateRoute><Homepage /></PrivateRoute>  } />
+          <Route path="/addpatient" element={<PrivateRoute><AddPatient /></PrivateRoute>} />
+          <Route path="/consent" element={<PrivateRoute><ConsentForm /></PrivateRoute> } />
+          <Route path="/questionnaire" element={<PrivateRoute><Questionnaire /></PrivateRoute> } />
+          <Route path="/results" element={<PrivateRoute><Results /></PrivateRoute> } />
+          <Route path="/results/:patientID" element={<PrivateRoute><Results /></PrivateRoute> } />
+          <Route path="/upload" element={<PrivateRoute><Upload /></PrivateRoute> } />
+          <Route path="/report" element={<PrivateRoute><Report /></PrivateRoute> } />
+          <Route path="/report/:patientID" element={<PrivateRoute><Report /></PrivateRoute> } />
+        </Routes>
+    </AuthProvider>
   );
 }
 
