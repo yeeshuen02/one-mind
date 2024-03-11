@@ -33,7 +33,7 @@
   padding-bottom: 40px;
 
   img {
-    width: 200px;
+    width: 180px;
     border-radius: 100px;
   }
 
@@ -45,13 +45,14 @@
 
 .profile-content-container {
   width: 400px;
-  height: 600px;
+  height: 70vh;
   background-color: #5b75fe;
-  border-bottom-left-radius: 20px;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
 }
 
 .profile-content {
-  padding: 50px 50px;
+  padding: 40px 50px;
 }
 
 .profile-details {
@@ -63,18 +64,17 @@
 }
 
 .logout {
-  padding: 20px 50px;
+  padding: 0 50px 0 50px;
   display: flex;
   flex-direction: row;
   gap: 5px;
   cursor: pointer;
+  border: none;
+  background-color: #5b75fe;
+  font-size: 16px;
 
   p {
     color: #fff;
     text-decoration: underline;
   }
-}
-
-p.logout:hover {
-  text-decoration: underline;
 }

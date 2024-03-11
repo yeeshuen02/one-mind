@@ -146,7 +146,6 @@ const Homepage = () => {
 
   const toggleProfile = () => {
     setProfileOpen(!profileOpen);
-    document.body.classList.toggle("no-scroll", profileOpen);
     console.log(profileOpen);
   };
 
