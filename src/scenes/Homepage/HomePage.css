@@ -162,41 +162,6 @@
   text-align: center;
 }
 
-/* .patient-table{
-    margin: 20px 20px 0px 0px;
-    background-color: #F2F5F9;
-    border-radius: 30px;
-    height: 77%;
-
-}
-
-.patient-table-header{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding-left: 25px;
-}
-
-.patient-table-header p{
-    font-size: 30px;
-    font-weight: 900;
-    margin-top: 25px;
-    margin-left: 25px;
-}
-
-.patient-table-header button{
-    font-size: 20px;
-    font-weight: bold;
-    margin-top: 25px;
-    margin-right: 25px;
-    background-color: #0F67FE;
-    border-width: 0px;
-    border-radius: 15px;
-    color: white;
-    padding: 15px 25px 15px 25px;
-    width: 200px;
-} */
-
 .gender-checkbox {
   display: block;
   position: relative;
@@ -302,4 +267,21 @@ th:nth-child(2) {
   margin-bottom: 50px;
   border-radius: 10px;
   border: 1px solid #a3a3a3;
+}
+
+.user-icon {
+  border: none;
+  background-color: #fff;
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(3px);
+  z-index: 999;
+  pointer-events: auto;
 }

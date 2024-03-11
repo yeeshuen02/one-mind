@@ -6,7 +6,7 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { collection, deleteDoc, doc, onSnapshot } from "firebase/firestore";
 import { db } from "../../config/firebase";
-import AddPatient from "../AddPatients/AddPatient";
+import AddPatient from "../../scenes/AddPatients/AddPatient";
 import IconButton from "@mui/material/IconButton";
 import DeleteIcon from "@mui/icons-material/Delete";
 

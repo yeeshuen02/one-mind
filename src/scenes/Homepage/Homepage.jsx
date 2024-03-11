@@ -7,13 +7,11 @@ import dateIcon from "../../assets/calendar-icon.png";
 import genderIcon from "../../assets/gender-icon.png";
 import phq9Icon from "../../assets/PHQ9-icon.png";
 import statusIcon from "../../assets/status-icon.png";
-import notiIcon from "../../assets/notification.png";
 import userIcon from "../../assets/user.png";
 import inReviewIcon from "../../assets/in-review.png";
 import diagnosedIcon from "../../assets/diagnosed-icon.png";
 import totalIcon from "../../assets/total-icon.png";
-import searchRightIcon from "../../assets/search.png";
-import Datatable from "../Datatable/Datatable";
+import Datatable from "../../components/Datatable/Datatable";
 import { db } from "../../config/firebase";
 import { useNavigate } from "react-router-dom";
 
@@ -27,10 +25,11 @@ import {
 
 import "./HomePage.css";
 import { useAuth } from "../../context/AuthContext";
+import Profile from "../../components/Profile/Profile";
 
 const Homepage = () => {
   const navigate = useNavigate();
-  const {user} = useAuth();
+  const { user } = useAuth();
 
   //search bar
   const [search, setSearch] = useState("");
@@ -143,6 +142,14 @@ const Homepage = () => {
     fetchData();
   }, []);
 
+  const [profileOpen, setProfileOpen] = useState(false);
+
+  const toggleProfile = () => {
+    setProfileOpen(!profileOpen);
+    document.body.classList.toggle("no-scroll", profileOpen);
+    console.log(profileOpen);
+  };
+
   return (
     <div className="Homepage">
       <div className="top-nav">
@@ -154,12 +161,11 @@ const Homepage = () => {
           </button>
         </div>
         <div className="homepage-right-side">
-          <div className="user-icon">
-            <img src={userIcon} alt="search Logo" />
-          </div>
+          <button className="user-icon" onClick={toggleProfile}>
+            <img src={userIcon} alt="Clinician Profile" />
+          </button>
         </div>
       </div>
-
       <div className="bottom-content">
         <div className="filter-bar">
           <div className="name-block">
@@ -335,6 +341,8 @@ const Homepage = () => {
           </div> */}
         </div>
       </div>
+      {profileOpen && <div className="overlay" onClick={toggleProfile}></div>}
+      <Profile show={profileOpen} onClose={toggleProfile} />
     </div>
   );
 };
