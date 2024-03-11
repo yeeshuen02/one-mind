@@ -1,0 +1,67 @@
+.upload-section{
+    background-color: #242E49;
+    padding: 50px 0px 50px 0px;
+    border-top-left-radius: 10px;
+    border-top-left-radius: 10px;
+    color: white;
+    margin-top: 20px;
+    display: flex;
+    /* align-items: center; */
+    justify-content: center;
+    gap: 80px;
+    width: 100%;
+}
+
+.drag-drop{
+    border: 5px #3D4966 dashed;
+    border-radius: 10px;
+    padding: 50px 150px;
+    /* width: auto; */
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+}
+
+.drag-drop img{
+    width: 70px;
+    height: 50px;
+    margin-bottom: 20px;
+}
+
+.drag-drop p{
+    margin-bottom: 20px;
+}
+
+.or-text{
+    color: #FFFFFF59;
+}
+
+.drag-drop label{
+    background-color: #FFFFFF26;
+    color: #FFFFFFA6;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-weight: 600;
+}
+
+.upload-right-side{
+    margin-top: 50px;
+}
+
+.upload-right-side h1{
+    margin-bottom: 10px;
+}
+
+.upload-right-side p{
+    margin-bottom: 100px;
+}
+
+.upload-right-side button{
+    background-color: #0F67FE;
+    color: white;
+    border-radius: 5px;
+    padding: 12px 30px;
+    font-weight: 600;
+    border: none;
+}

@@ -1,0 +1,41 @@
+.consent-form {
+  background-color: #f5f7ff;
+  padding: 50px;
+  border-radius: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  justify-content: center;
+}
+
+.consent-form h3 {
+  font-size: 18px;
+  font-weight: bold;
+  color: #5b75fe;
+}
+
+.consent-form p {
+  font-size: 16px;
+  font-weight: 400;
+  color: #777777;
+}
+
+.consent-form h4 {
+  font-size: 16px;
+  font-weight: 400;
+  color: #5b75fe;
+}
+
+.consent-form li {
+  font-size: 16px;
+  font-weight: 400;
+  color: #777777;
+}
+
+.consent-form label {
+  font-size: 16px;
+  font-weight: 400;
+  color: #777777;
+  display: flex;
+  gap: 15px;
+}

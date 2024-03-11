@@ -1,0 +1,63 @@
+.ques-button-container {
+  gap: 100px;
+  margin-bottom: 100px;
+}
+
+.phq-ques {
+  display: flex;
+  flex-direction: row;
+  gap: 100px;
+  background-color: #f5f7ff;
+  padding: 50px 5%;
+  justify-content: center;
+  align-items: center;
+  margin: 0px 15% 50px 15%;
+  border-radius: 20px;
+}
+
+.phq-ques p {
+  color: #a3a3a3;
+  font-weight: bold;
+  font-size: 24px;
+  width: 400px;
+}
+
+.selection-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.option {
+  font-size: 24px;
+  font-weight: bold;
+  padding: 10px 3%;
+  width: 320px;
+  margin: 5px 0px;
+  background-color: #f5f7ff;
+  color: #5b75fe;
+  border-color: #5b75fe;
+  border-radius: 20px;
+  border-style: solid;
+  list-style: none;
+  text-align: center;
+}
+
+li.option:hover {
+  background-color: #a3b2fe;
+  color: #fff;
+}
+
+.option-active {
+  font-size: 24px;
+  font-weight: bold;
+  padding: 10px 3%;
+  width: 320px;
+  margin: 5px 0px;
+  color: #fff;
+  border-color: #5b75fe;
+  border-radius: 20px;
+  border-style: solid;
+  list-style: none;
+  text-align: center;
+  background-color: #5b75fe;
+}
