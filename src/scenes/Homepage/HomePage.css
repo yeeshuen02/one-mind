@@ -1,6 +1,8 @@
 .top-nav {
   display: flex;
   justify-content: space-between;
+  padding-top: 30px;
+  align-items: center;
 }
 
 /* .homepage-home-button {
@@ -21,6 +23,7 @@
   border: 0cm;
   background-color: transparent;
   display: flex;
+  gap: 10px;
 }
 
 .homepage-right-side {
@@ -36,14 +39,15 @@
 }
 
 .bottom-content {
-  margin: 30px;
+  padding: 30px 5%;
   display: flex;
   gap: 40px;
+  justify-content: center;
 }
 
 .filter-bar {
   display: flex;
-  width: 100%; 
+  width: 400px;
   height: 100%;
   background-color: #5b75fe;
   padding: 50px 0px 50px 0px;
@@ -53,7 +57,10 @@
   /* flex: 30%; */
   flex-direction: column;
   /* justify-content: space-between; */
+<<<<<<< HEAD
   margin-left: 10px;
+=======
+>>>>>>> c023653a7ca3121020a8fb02ff5b3776249eaf92
 }
 
 .filter-bar img {
@@ -70,10 +77,11 @@
   width: 100%;
   justify-self: center;
   color: white;
-  padding-left: 20px;
+  padding: 0 20px 0 20px;
   font-size: 10px;
 }
 
+<<<<<<< HEAD
 #calendar-icon{
   color: white;
 }
@@ -82,6 +90,8 @@
   width: 12rem;
 }
 
+=======
+>>>>>>> c023653a7ca3121020a8fb02ff5b3776249eaf92
 .filter-bar ::placeholder {
   color: white;
 }
@@ -116,22 +126,15 @@
   color: white;
 }
 
-.horizontal-line{
+.horizontal-line {
   width: 100%;
   height: 2px; /* Adjust the height as needed */
-  background-color: #7D92FF; /* Adjust the color as needed */
-
-}
-
-.home-main-content {
-  /* flex: 70%; */
-  margin-right: 30px;
+  background-color: #7d92ff; /* Adjust the color as needed */
 }
 
 .diagnosis-details {
   display: flex;
   gap: 30px;
-  margin-right:40px;
   width: auto;
 }
 
@@ -148,17 +151,24 @@
   width: 100%;
   border-radius: 30px;
   height: 200px;
-  justify-content: space-between;
-  /* padding: 10px 50px 10px 0px ; */
-  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 20px 3%;
+  gap: 5px;
 }
 
 .in-review-header {
   display: flex;
   align-items: center;
   font-size: 28px;
-  text-align: center;
-  margin-bottom: 15px;
+  gap: 30px;
+
+  img {
+    width: 100px;
+    height: 100px;
+    margin: 0;
+  }
 }
 
 .in-review-description {
@@ -247,7 +257,6 @@
 /* When the radio button is checked, add a blue background */
 .gender-checkbox input:checked ~ .checkmark {
   background-color: #2196f3;
-
 }
 
 /* Create the indicator (the dot/circle - hidden when not checked) */
