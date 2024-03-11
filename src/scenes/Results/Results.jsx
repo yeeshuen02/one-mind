@@ -14,7 +14,6 @@ const Results = () => {
   let { patientID } = useParams();
   const [showText, setShowText] = useState(true);
   const [patientDetails, setPatientDetails] = useState({});
-  const [modelAnalysis, setModelAnalysis] = useState({});
 
   const handleButtonClick = async () => {
     const userConfirmed = window.confirm(
@@ -68,27 +67,7 @@ const Results = () => {
       }
     };
 
-    //get model anlysis frm backend
-    const fetchModelAnalysis = async () => {
-      try {
-        const response = await fetch("http://127.0.0.1:5000/api/upload", {
-          method: "GET"
-        });
-
-        if (response.ok) {
-          const modelAnalysisData = await response.json();
-          console.log("Model Analysis Data:", modelAnalysisData);
-          setModelAnalysis(modelAnalysisData.result_class);
-        } else {
-          console.error("Error fetching model analysis", response.statusText);
-        }
-      } catch (error) {
-        console.error("Error fetching model analysis:", error);
-      }
-    };
-
     fetchPatientDetails();
-    fetchModelAnalysis();
   }, [patientID]);
 
   //severity based on score
@@ -184,7 +163,7 @@ const Results = () => {
               <p>Model Analysis:</p>
               <div className="text-background">
                 {" "}
-                <p>{modelAnalysis.result_class}</p>
+                <p>{patientDetails.ModelAnalysis}</p>
               </div>
             </div>
             <div className="second-row-left-right">

@@ -3,12 +3,15 @@ import { useNavigate, useLocation } from "react-router-dom";
 import homePageOneMindLogo from "../../assets/logo-blue.png";
 import "./Upload.css";
 import uploadLogo from "../../assets/Upload.png";
+import { updateDoc, doc } from "firebase/firestore";
+import { db } from "../../config/firebase";
 
 const Upload = () => {
   const navigate = useNavigate();
   const location = useLocation();
-  const { patientID, name } = location.state;
+  const { patientID } = location.state;
   const [selectedFile, setSelectedFile] = useState(null);
+  const [modelAnalysis, setModelAnalysis] = useState("");
 
   const handleFileChange = (event) => {
     setSelectedFile(event.target.files[0]);
@@ -28,13 +31,36 @@ const Upload = () => {
         .then((data) => {
           // Handle the response from the server
           console.log("Server Response:", data);
+
+          //save prediction result to firebase
+          const { result_class } = data;
+          saveResultToFirebase(patientID, result_class);
+          
           setTimeout(() => {
             navigate(`/results/${patientID}`);
-          }, 5000);
+          }, 3000);
         })
         .catch((error) => {
           console.error("Error:", error);
         });
+    }
+  };
+
+  //save result_class in firebase function
+  const saveResultToFirebase = async (patientID, result_class) => {
+    const patientRef = doc (db, "PatientList", patientID);
+
+    try{
+      await updateDoc(
+        patientRef,
+        {
+          ModelAnalysis: result_class,
+        },
+        { merge: true }
+        );
+        console.log("Result class saved successfully for patientID:", patientID);
+    } catch (error) {
+        console.error("Error saving result class:", error);
     }
   };
 

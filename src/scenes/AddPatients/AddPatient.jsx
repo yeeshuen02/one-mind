@@ -2,8 +2,6 @@ import { useState, useEffect } from "react";
 import {
   doc,
   setDoc,
-  collection,
-  addDoc,
   serverTimestamp,
   getDoc,
 } from "firebase/firestore";
@@ -56,6 +54,7 @@ const AddPatient = () => {
   const [occupation, setOccupation] = useState("");
   const [phoneNo, setPhoneNo] = useState("");
   const [score, setScore] = useState("");
+  const [modelAnalysis, setModelAnalysis] = useState("");
   const [status, setStatus] = useState("In Review");
   
   const handleAdd = async (e) => {
@@ -72,6 +71,7 @@ const AddPatient = () => {
         PhoneNumber: phoneNo,
         Date: serverTimestamp(),
         Score: score,
+        ModelAnalysis: modelAnalysis,
         Status: status,
       });
 
