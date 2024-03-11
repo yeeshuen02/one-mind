@@ -21,7 +21,7 @@ const AddPatient = () => {
   useEffect(() => {
     const fetchPatientCounter = async () => {
       try {
-        const counterDocRef = doc(db, "PatientList", "PatientID"); 
+        const counterDocRef = doc(db, "PatientList", "PatientID");
         const counterDocSnapshot = await getDoc(counterDocRef);
 
         if (counterDocSnapshot.exists()) {
@@ -56,12 +56,13 @@ const AddPatient = () => {
   const [occupation, setOccupation] = useState("");
   const [phoneNo, setPhoneNo] = useState("");
   const [score, setScore] = useState("");
-  const [status, setStatus] = useState("");
-
+  const [status, setStatus] = useState("In Review");
+  
   const handleAdd = async (e) => {
     e.preventDefault();
     try {
-      const newPatientRef = await addDoc(collection(db, "PatientList"), {
+      const newPatientRef = doc(db, "PatientList", patientID);
+      await setDoc(newPatientRef, {
         PatientID: patientID,
         Name: name,
         DateofBirth: dob,
@@ -104,10 +105,6 @@ const AddPatient = () => {
 
       <div className="information-container">
         <div className="progress-indicator">
-          {/* <hr className="step-line1" />
-          <div className="step-line2" />
-          <div className="step-line3" /> */}
-
           <div className="progress-element-active">
             <div className="circle-out-active">
               <span>1</span>
@@ -204,36 +201,6 @@ const AddPatient = () => {
               />
             </div>
           </div>
-
-          {/* <div>
-            <input
-              type="text"
-              placeholder="Patient ID"
-              onChange={(e) => setPatientID(e.target.value)}
-              value={patientID}
-              required
-            />
-          </div> 
-
-          <div>
-            <input
-              type="number"
-              placeholder="Score"
-              onChange={(e) => setScore(e.target.value)}
-              value={score}
-              required
-            />
-          </div>
-
-          <div>
-            <input
-              type="text"
-              placeholder="Status"
-              onChange={(e) => setStatus(e.target.value)}
-              value={status}
-              required
-            />
-          </div> */}
 
           <div className="nav-buttons">
             <button
