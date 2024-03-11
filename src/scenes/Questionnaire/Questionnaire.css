@@ -42,7 +42,7 @@
   text-align: center;
 }
 
-li.option:hover {
+li:hover {
   background-color: #a3b2fe;
   color: #fff;
 }
@@ -53,6 +53,7 @@ li.option:hover {
   padding: 10px 3%;
   width: 320px;
   margin: 5px 0px;
+
   color: #fff;
   border-color: #5b75fe;
   border-radius: 20px;

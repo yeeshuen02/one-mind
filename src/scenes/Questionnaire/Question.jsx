@@ -6,7 +6,6 @@ export default function Question({ ques, options, saveOptionselected }) {
   const handleOptionClick = (index) => {
     setSelectedOption(index);
     saveOptionselected(index);
-    console.log(selectedOption);
   };
 
   return (

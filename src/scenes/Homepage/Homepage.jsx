@@ -26,59 +26,56 @@ import {
 } from "firebase/firestore";
 
 import "./HomePage.css";
-import { useAuth } from "../../context/AuthContext";
+
 
 const Homepage = () => {
   const navigate = useNavigate();
-  const {user} = useAuth();
 
   //search bar
   const [search, setSearch] = useState("");
   const handleSearch = (event) => {
     setSearch(event.target.value);
   };
-
+ 
   //filter age
   const [selectedValue, setSelectedValue] = useState("");
   const handleDropdownChange = (event) => {
     setSelectedValue(event.target.value);
   };
-
+ 
   //filter date
   const [selectedDate, setSelectedDate] = useState("");
   const handleDateChange = (event) => {
     setSelectedDate(event.target.value);
   };
-
-  // filter gender
+  
+// filter gender
   const [selectedGenderOption, setSelectedGenderOption] = useState("");
   const handleGenderOption = (value) => {
-    setSelectedGenderOption((prevOptions) => {
+      setSelectedGenderOption((prevOptions) => {
       if (prevOptions.includes(value)) {
         return prevOptions.filter((option) => option !== value);
       } else {
         return [...prevOptions, value];
       }
-    });
-  };
+    });  }
 
   //filter phq9 score
   const [filterScore, setfilterScore] = useState("");
   const handleFilterScore = (event) => {
     setfilterScore(event.target.value);
   };
-
+ 
   //filter status
   const [selectedStatusOption, setSelectedStatusOption] = useState("");
   const handleStatusOption = (value) => {
     setSelectedStatusOption((prevOptions) => {
-      if (prevOptions.includes(value)) {
-        return prevOptions.filter((option) => option !== value);
-      } else {
-        return [...prevOptions, value];
-      }
-    });
-  };
+    if (prevOptions.includes(value)) {
+      return prevOptions.filter((option) => option !== value);
+    } else {
+      return [...prevOptions, value];
+    }
+  });  }
 
   //the statistics
   const [totalAmount, setTotalAmount] = useState(null);
@@ -86,9 +83,12 @@ const Homepage = () => {
   const [inReviewAmount, setInReviewAmount] = useState(null);
   const [diagnosedAmount, setDiagnosedAmount] = useState(null);
 
+
   const HorizontalLine = () => {
-    return <div className="horizontal-line"></div>;
-  };
+    return (
+      <div className="horizontal-line"></div>
+    );
+  }
 
   useEffect(() => {
     const fetchData = async () => {
@@ -150,8 +150,9 @@ const Homepage = () => {
           <button className="homepage-home-button">
             <img src={homePageOneMindLogo} alt="search Logo" />
             <p>OneMind</p>
-            {/* {user && user.email} this is for the side bar account user */}
           </button>
+          <button className="get-started-button" onClick={() => navigate('/results')}>To results page for now</button>
+
         </div>
         <div className="homepage-right-side">
           <div className="user-icon">
@@ -167,14 +168,13 @@ const Homepage = () => {
               <img src={searchIcon} alt="search Logo" />
               <p>Filter</p>
             </div>
-            <input
-              type="text"
-              placeholder="ID/Name"
-              value={search}
-              onChange={handleSearch}
-            />
+            <input 
+              type="text" 
+              placeholder="ID/Name" 
+              value={search} 
+              onChange={handleSearch}/>
           </div>
-          <HorizontalLine />
+            <HorizontalLine />
 
           <div className="age-block">
             <div className="age-search">
@@ -203,51 +203,44 @@ const Homepage = () => {
               <img src={dateIcon} alt="search Logo" />
               <p>Date</p>
             </div>
-<<<<<<< HEAD
             <input 
               type="date"  
               id="dropdown"
               value={selectedDate} 
               onChange={handleDateChange} />
-=======
-            <input
-              type="date"
-              value={selectedDate}
-              onChange={handleDateChange}
-            />
->>>>>>> c023653a7ca3121020a8fb02ff5b3776249eaf92
           </div>
           <HorizontalLine />
 
           <div className="gender-block">
-            <div className="gender-search">
-              <img src={genderIcon} alt="gender Logo" />
-              <p>Gender</p>
-            </div>
+      <div className="gender-search">
+        <img src={genderIcon} alt="gender Logo" />
+        <p>Gender</p>
+      </div>
+      
+      <label className="gender-checkbox">
+        Male
+        <input
+          type="checkbox"
+          value="Male"
+          checked={selectedGenderOption.includes("Male")}
+          onChange={() => handleGenderOption("Male")}
+        />
+        <span className="checkmark"></span>
+      </label>
 
-            <label className="gender-checkbox">
-              Male
-              <input
-                type="checkbox"
-                value="Male"
-                checked={selectedGenderOption.includes("Male")}
-                onChange={() => handleGenderOption("Male")}
-              />
-              <span className="checkmark"></span>
-            </label>
+      <label className="gender-checkbox">
+        Female
+        <input
+          type="checkbox"
+          value="Female"
+          checked={selectedGenderOption.includes("Female")}
+          onChange={() => handleGenderOption("Female")}
+        />
+        <span className="checkmark"></span>
+      </label>
+    </div>
 
-            <label className="gender-checkbox">
-              Female
-              <input
-                type="checkbox"
-                value="Female"
-                checked={selectedGenderOption.includes("Female")}
-                onChange={() => handleGenderOption("Female")}
-              />
-              <span className="checkmark"></span>
-            </label>
-          </div>
-
+          
           <HorizontalLine />
 
           <div className="name-block">
@@ -255,12 +248,11 @@ const Homepage = () => {
               <img src={phq9Icon} alt="search Logo" />
               <p>PHQ-9 Score</p>
             </div>
-            <input
-              type="number"
-              placeholder="Enter a score"
+            <input 
+              type="number" 
+              placeholder="Enter a score" 
               value={filterScore}
-              onChange={handleFilterScore}
-            />
+              onChange={handleFilterScore}/>
           </div>
           <HorizontalLine />
 
@@ -270,7 +262,7 @@ const Homepage = () => {
               <p>Status</p>
             </div>
             <label className="gender-checkbox">
-              In Review
+            In Review
               <input
                 type="checkbox"
                 value="In Review"
@@ -279,7 +271,7 @@ const Homepage = () => {
               />
               <span className="checkmark"></span>
             </label>
-
+ 
             <label className="gender-checkbox">
               Diagnosed
               <input
@@ -290,7 +282,9 @@ const Homepage = () => {
               />
               <span className="checkmark"></span>
             </label>
+
           </div>
+
         </div>
 
         <div className="home-main-content">
@@ -323,7 +317,7 @@ const Homepage = () => {
               </div>
             </div>
           </div>
-          <Datatable
+          <Datatable 
             search={search}
             handleSearch={handleSearch}
             selectedValue={selectedValue}

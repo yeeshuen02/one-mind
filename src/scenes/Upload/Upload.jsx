@@ -1,46 +1,17 @@
-import React, { useState, useRef } from "react";
-import { useNavigate, useLocation } from "react-router-dom";
+import React from "react";
 import homePageOneMindLogo from "../../assets/logo-blue.png";
 import "./Upload.css";
 import uploadLogo from "../../assets/Upload.png";
 
+
+
+
 const Upload = () => {
-  const navigate = useNavigate();
-  const location = useLocation();
-  const { patientID, name } = location.state;
-  const [selectedFile, setSelectedFile] = useState(null);
-
-  const handleFileChange = (event) => {
-    setSelectedFile(event.target.files[0]);
-  };
-
-  const handleUpload = () => {
-    if (selectedFile) {
-      //using the api to upload file
-      const formData = new FormData();
-      formData.append("file", selectedFile);
-
-      fetch("/api/upload", {
-        method: "POST",
-        body: formData,
-      })
-        .then((response) => response.json())
-        .then((data) => {
-          // Handle the response from the server
-          console.log("Server Response:", data);
-          setTimeout(() => {
-            navigate(`/results/${patientID}`);
-          }, 5000);
-        })
-        .catch((error) => {
-          console.error("Error:", error);
-        });
-    }
-  };
-
   return (
+
+    
     <div className="upload-page">
-      <div className="hero">
+        <div className="hero">
         <div className="top-nav">
           <button className="homepage-home-button">
             <img src={homePageOneMindLogo} alt="Homepage" />
@@ -84,31 +55,27 @@ const Upload = () => {
             <p>Upload EEG Recording</p>
           </div>
         </div>
-      </div>
-      <div className="upload-section">
+    </div>
+    <div className="upload-section">
+
         <div className="drag-drop">
-          <img src={uploadLogo} alt="Homepage" />
-          <p>Drag & Drop</p>
-          <p className="or-text">OR</p>
-          <label className="browse-file">
-            {" "}
-            Browse File
-            <input
-              type="file"
-              accept=".edf"
-              id="edfFile"
-              onChange={handleFileChange}
-              style={{ display: "none" }}
-            />
-          </label>
+            <img src={uploadLogo} alt="Homepage" />
+            <p>Drag & Drop</p>
+            <p className="or-text">OR</p>
+            <button className="browse-file"> Browse File</button>
+
         </div>
         <div className="upload-right-side">
-          <h1>Upload EEG Recordings</h1>
-          <p>Select files from device</p>
-          <button onClick={handleUpload}>Upload &rarr;</button>
+            <h1>Upload EEG Recordings</h1>
+            <p>Select files from device</p>
+            <button>
+                Upload &rarr;
+            </button>
         </div>
-      </div>
     </div>
+
+    </div>
+
   );
 };
 
