@@ -3,7 +3,7 @@ import { useNavigate, useLocation } from "react-router-dom";
 import "../../scenes/Questionnaire/Questionnaire.css";
 import Question from "./Question.jsx";
 import { QUESTION } from "./questionData.js";
-import homePageOneMindLogo from "../../assets/logo-blue.png";
+import Homebutton from "../../components/Homebutton/Homebutton.jsx";
 import { updateDoc, doc, getDoc } from "firebase/firestore";
 import { db } from "../../config/firebase";
 
@@ -78,10 +78,7 @@ function Questionnaire() {
     <section>
       <div className="hero">
         <div className="top-nav">
-          <button className="homepage-home-button">
-            <img src={homePageOneMindLogo} alt="Homepage" />
-            <p>OneMind</p>
-          </button>
+          <Homebutton/>
         </div>
         <div className="hero-content">
           <h1>PHQ-9</h1>

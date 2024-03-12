@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
-import homePageOneMindLogo from "../../assets/logo-blue.png";
+import Homebutton from "../../components/Homebutton/Homebutton";
 import "../../scenes/ConsentForm/ConsentForm.css";
 import { collection, addDoc, serverTimestamp } from "firebase/firestore";
 import { db } from "../../config/firebase";
@@ -40,10 +40,8 @@ function ConsentForm() {
     <section>
       <div className="hero">
         <div className="top-nav">
-          <button className="homepage-home-button">
-            <img src={homePageOneMindLogo} alt="Homepage" />
-            <p>OneMind</p>
-          </button>
+           <Homebutton/>
+
         </div>
         <div className="hero-content">
           <h1>Consent</h1>

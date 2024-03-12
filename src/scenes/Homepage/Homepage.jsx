@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 
-import homePageOneMindLogo from "../../assets/logo-blue.png";
 import searchIcon from "../../assets/search-icon.png";
 import ageIcon from "../../assets/filter-age-icon.png";
 import dateIcon from "../../assets/calendar-icon.png";
@@ -14,6 +13,7 @@ import totalIcon from "../../assets/total-icon.png";
 import Datatable from "../../components/Datatable/Datatable";
 import { db } from "../../config/firebase";
 import { useNavigate } from "react-router-dom";
+import Homebutton from "../../components/Homebutton/Homebutton";
 
 import {
   collection,
@@ -153,11 +153,7 @@ const Homepage = () => {
     <div className="Homepage">
       <div className="top-nav">
         <div>
-          <button className="homepage-home-button">
-            <img src={homePageOneMindLogo} alt="search Logo" />
-            <p>OneMind</p>
-            {/* {user && user.email} this is for the side bar account user */}
-          </button>
+          <Homebutton/>
         </div>
         <div className="homepage-right-side">
           <button className="user-icon" onClick={toggleProfile}>

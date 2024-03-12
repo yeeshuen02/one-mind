@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import homePageOneMindLogo from "../../assets/logo-blue.png";
+import Homebutton from "../../components/Homebutton/Homebutton";
 import "./Results.css";
 import modelIcon from "../../assets/cpu-charge.png";
 import clipboardIcon from "../../assets/clipboard-text.png";
@@ -91,13 +91,7 @@ const Results = () => {
     <section className="results-page">
       <div className="hero-result">
         <div className="top-nav">
-          <button
-            className="homepage-home-button"
-            onClick={() => navigate("/homepage")}
-          >
-            <img src={homePageOneMindLogo} alt="Homepage" />
-            <p>OneMind</p>
-          </button>
+          <Homebutton/>
         </div>
 
         <div className="hero-content">

@@ -7,8 +7,8 @@ import {
 } from "firebase/firestore";
 import { db } from "../../config/firebase";
 import { useNavigate } from "react-router-dom";
-import homePageOneMindLogo from "../../assets/logo-blue.png";
 import "../../scenes/AddPatients/AddPatients.css";
+import Homebutton from "../../components/Homebutton/Homebutton";
 
 const AddPatient = () => {
   const navigate = useNavigate();
@@ -89,10 +89,7 @@ const AddPatient = () => {
     <section>
       <div className="hero">
         <div className="top-nav">
-          <button className="homepage-home-button">
-            <img src={homePageOneMindLogo} alt="Homepage" />
-            <p>OneMind</p>
-          </button>
+          <Homebutton/>
         </div>
         <div className="hero-content">
           <h1>Patient</h1>

@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { db } from "../../config/firebase";
 import { doc, getDoc } from "firebase/firestore";
-import homePageOneMindLogo from "../../assets/logo-blue.png";
+import Homebutton from "../../components/Homebutton/Homebutton";
 import personalCard from "../../assets/personalcard.png";
 import patientId from "../../assets/patientid.png";
 import "../Report/Report.css";
@@ -73,13 +73,8 @@ const Report = () => {
     <section>
       <div className="hero-result">
         <div className="top-nav">
-          <button
-            className="homepage-home-button"
-            onClick={() => navigate("/homepage")}
-          >
-            <img src={homePageOneMindLogo} alt="Homepage" />
-            <p>OneMind</p>
-          </button>
+          <Homebutton/>
+
         </div>
         <div className="hero-content-result">
           <h1>Result</h1>
