@@ -38,7 +38,7 @@ const Upload = () => {
           
           setTimeout(() => {
             navigate(`/results/${patientID}`);
-          }, 3000);
+          }, 500); 
         })
         .catch((error) => {
           console.error("Error:", error);
