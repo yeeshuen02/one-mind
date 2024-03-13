@@ -39,9 +39,9 @@ const LoginForm = () => {
           error.code === "auth/user-not-found" ||
           error.code === "auth/wrong-password"
         ) {
-          setErrMsg("Invalid Email or Password");
+          setErrMsg("Login Failed. Please try again.");
         } else if (error.code === "auth/invalid-email") {
-          setErrMsg("Invalid Email Address");
+          setErrMsg("Login Failed. Please try again.");
         } else if (error.code === "auth/too-many-requests") {
           setErrMsg("Too Many Login Attempts. Try again later.");
         } else {
