@@ -3,7 +3,7 @@ import { useNavigate, useLocation } from "react-router-dom";
 import "../../scenes/Questionnaire/Questionnaire.css";
 import Question from "./Question.jsx";
 import { QUESTION } from "./questionData.js";
-import Homebutton from "../../components/Homebutton/Homebutton.jsx";
+import Homebuttondelete from "../../components/Homebuttondelete/Homebuttondelete.jsx";
 import { updateDoc, doc, getDoc } from "firebase/firestore";
 import { db } from "../../config/firebase";
 
@@ -78,7 +78,7 @@ function Questionnaire() {
     <section>
       <div className="hero">
         <div className="top-nav">
-          <Homebutton/>
+          <Homebuttondelete/>
         </div>
         <div className="hero-content">
           <h1>PHQ-9</h1>

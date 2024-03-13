@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
-import Homebutton from "../../components/Homebutton/Homebutton";
+import Homebuttondelete from "../../components/Homebuttondelete/Homebuttondelete";
 import "../../scenes/ConsentForm/ConsentForm.css";
 import { collection, addDoc, serverTimestamp } from "firebase/firestore";
 import { db } from "../../config/firebase";
@@ -40,7 +40,7 @@ function ConsentForm() {
     <section>
       <div className="hero">
         <div className="top-nav">
-           <Homebutton/>
+           <Homebuttondelete/>
 
         </div>
         <div className="hero-content">

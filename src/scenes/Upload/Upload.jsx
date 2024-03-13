@@ -1,6 +1,6 @@
 import React, { useState, useRef } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
-import Homebutton from "../../components/Homebutton/Homebutton";
+import Homebuttondelete from "../../components/Homebuttondelete/Homebuttondelete";
 import "./Upload.css";
 import uploadLogo from "../../assets/Upload.png";
 import { updateDoc, doc } from "firebase/firestore";
@@ -68,7 +68,7 @@ const Upload = () => {
     <div className="upload-page">
       <div className="hero">
         <div className="top-nav">
-          <Homebutton/>
+          <Homebuttondelete/>
 
         </div>
         <div className="hero-content">
