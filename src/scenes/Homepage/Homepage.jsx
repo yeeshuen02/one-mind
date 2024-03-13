@@ -110,7 +110,7 @@ const Homepage = () => {
       //Total Amount
       const patientListQuery = query(collection(db, "PatientList"));
       const patientListData = await getDocs(patientListQuery);
-      setTotalAmount(patientListData.docs.length);
+      setTotalAmount(patientListData.docs.length - 1);
 
       //for percentage
       const today = new Date();
