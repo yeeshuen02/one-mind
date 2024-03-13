@@ -74,7 +74,7 @@ const AddPatient = () => {
         ModelAnalysis: modelAnalysis,
         Status: status,
       });
-
+      console.log("Patient ID:", patientID);
       const counterDocRef = doc(db, "PatientList", "PatientID");
       await setDoc(counterDocRef, { value: patientCounter + 1 });
 
@@ -158,6 +158,8 @@ const AddPatient = () => {
               <input
                 type="number"
                 onChange={(e) => setAge(e.target.value)}
+                min={10}
+                max={100}
                 value={age}
                 required
               />

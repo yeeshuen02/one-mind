@@ -68,7 +68,7 @@ const Upload = () => {
     <div className="upload-page">
       <div className="hero">
         <div className="top-nav">
-          <Homebuttondelete/>
+          <Homebuttondelete patientID={patientID}/>
 
         </div>
         <div className="hero-content">

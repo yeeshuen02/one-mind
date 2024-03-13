@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import Homebutton from "../../components/Homebutton/Homebutton";
+import homePageOneMindLogo from "../../assets/logo-blue.png";
 import "./Results.css";
 import modelIcon from "../../assets/cpu-charge.png";
 import clipboardIcon from "../../assets/clipboard-text.png";
@@ -67,6 +67,26 @@ const Results = () => {
       }
     };
 
+    //to make all status in sync
+    const fetchConfirmationStatus = async () => {
+      const patientRef = doc(db, "PatientList", patientID);
+
+      try {
+        const patientSnapshot = await getDoc(patientRef);
+
+        if (patientSnapshot.exists) {
+          const confirmationStatus = patientSnapshot.data()?.Status;
+
+          if (confirmationStatus === "Diagnosed") {
+            setShowText(false);
+          }
+        }
+      } catch (error) {
+        console.error("Error fetching confirmation status:", error);
+      }
+    };
+
+    fetchConfirmationStatus();
     fetchPatientDetails();
   }, [patientID]);
 
@@ -91,7 +111,10 @@ const Results = () => {
     <section className="results-page">
       <div className="hero-result">
         <div className="top-nav">
-          <Homebutton/>
+          <button className="homepage-home-button" onClick={() => navigate("/homepage")}>
+              <img src={homePageOneMindLogo} alt="Homepage" />
+              <p>OneMind</p>
+            </button>
         </div>
 
         <div className="hero-content">
@@ -191,7 +214,6 @@ const Results = () => {
               <div className="after-confirming">
                 <img src={infoCircleBlueIcon} alt="search Logo" />
                 <p>Results has been confirmed</p>
-                {/* Add additional content as needed */}
               </div>
             )}
           </div>

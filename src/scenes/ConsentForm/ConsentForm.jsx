@@ -40,7 +40,7 @@ function ConsentForm() {
     <section>
       <div className="hero">
         <div className="top-nav">
-           <Homebuttondelete/>
+           <Homebuttondelete patientID={patientID} />
 
         </div>
         <div className="hero-content">

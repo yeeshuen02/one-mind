@@ -1,19 +1,37 @@
 import React, { useState } from "react";
 import homePageOneMindLogo from "../../assets/logo-blue.png";
 import { useNavigate } from "react-router-dom";
-import { deleteDoc, doc } from "firebase/firestore";
+import { deleteDoc, doc, getDoc, setDoc } from "firebase/firestore";
 import { db } from "../../config/firebase";
 
-const Homebuttondelete = ({ userId }) => {
+const Homebuttondelete = ({ patientID }) => {
   const navigate = useNavigate();
   const [isDeleting, setIsDeleting] = useState(false);
+
+  const decrementCounter = async () => {
+    try {
+      // Retrieve the current counter value
+      const counterDocRef = doc(db, "PatientList", "PatientID");
+      const counterDocSnapshot = await getDoc(counterDocRef);
+
+      if (counterDocSnapshot.exists()) {
+        const counterValue = counterDocSnapshot.data().value;
+
+        // Decrement the counter
+        await setDoc(counterDocRef, { value: counterValue - 1 });
+      }
+    } catch (error) {
+      console.error("Error decrementing patient counter:", error);
+    }
+  };
 
   const handleDelete = async () => {
     if (isDeleting) return;
 
     try {
       setIsDeleting(true);
-      await deleteDoc(doc(db, "PatientList", userId));
+      await deleteDoc(doc(db, "PatientList", patientID));
+      await decrementCounter();
       setIsDeleting(false);
       // Continue with the navigation to the homepage after deletion
     } catch (err) {

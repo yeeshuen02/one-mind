@@ -78,7 +78,7 @@ function Questionnaire() {
     <section>
       <div className="hero">
         <div className="top-nav">
-          <Homebuttondelete/>
+          <Homebuttondelete patientID={patientID}/>
         </div>
         <div className="hero-content">
           <h1>PHQ-9</h1>
