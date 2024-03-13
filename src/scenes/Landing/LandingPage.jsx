@@ -274,7 +274,7 @@ const LandingPage = () => {
 
                                                 <div className="services-entities-des">
                                                     <p className="entities-heading"> Clinicians </p>
-                                                    <p className="entities-des"> At OneMind, we offer clinicians with <br/> seamless platform for uploading patient’s <br/> EEG data to detect and address <br/> depression. </p>
+                                                    <p className="entities-des"> At OneMind, we offer certified clinicians <br/> with seamless platform for uploading <br/> patient’s EEG data to detect and address <br/> depression. </p>
                                                 </div>
                                             </div>
                                         </div>
