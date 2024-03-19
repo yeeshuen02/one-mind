@@ -57,6 +57,7 @@
   font-weight: 580;
   align-items: center;
 }
+
 .age-header,
 .id-header,
 .name-header,
@@ -67,4 +68,18 @@
 .index-header {
   font-weight: 900 !important;
   font-size: 20px;
+}
+
+.cellWithStatus {
+  align-items: center;
+
+  &.Diagnosed {
+    color: rgb(19, 217, 19);
+    font-weight: 500;
+  }
+
+  &.In.Review {
+    color: rgb(255, 57, 57);
+    font-weight: 500;
+  }
 }
