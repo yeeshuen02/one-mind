@@ -11,12 +11,9 @@ const Homebutton = () => {
 
 
     const navigateHome = () => {
-        const isConfirmed = window.confirm(
-          "Are you sure you want to proceed to the homepage? The changes made will not be saved."
-        );
-        if (isConfirmed) {
+       
             navigate('/homepage')
-        }
+        
       };
 
 
