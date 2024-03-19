@@ -56,161 +56,161 @@
   .circle:nth-child(2) {
     width: 1750.88px;
     height: 2541.82px;
-    left: 35.19px;
+    left: 60.19px;
     top: 51.09px;
   }
 
   .circle:nth-child(3) {
     width: 1680.47px;
     height: 2439.62px;
-    left: 70.39px;
+    left: 95.39px;
     top: 102.19px;
   }
 
   .circle:nth-child(4) {
     width: 1610.09px;
     height: 2337.44px; 
-    left: 105.58px;
+    left: 130.58px;
     top: 153.28px;
   }
 
   .circle:nth-child(5) {
     width: 1539.71px;
     height: 2235.27px; 
-    left: 140.77px; 
+    left: 165.77px; 
     top: 204.37px;
   }
 
   .circle:nth-child(6) {
     width: 1469.33px; 
     height: 2133.09px;
-    left: 175.9px; 
+    left: 200.9px; 
     top: 255.45px;     
   }
 
   .circle:nth-child(7) {
     width: 1398.93px; 
     height: 2030.89px; 
-    left: 211.17px; 
+    left: 236.17px; 
     top: 306.56px;         
   }
 
   .circle:nth-child(8) {
     width: 1328.55px;
     height: 1928.71px; 
-    left: 246.35px; 
+    left: 271.35px; 
     top: 357.65px;            
   }
 
   .circle:nth-child(9) {
     width: 1258.17px;
     height: 1826.53px; 
-    left: 281.54px; 
+    left: 306.54px; 
     top: 408.73px;             
   }
 
   .circle:nth-child(10) {
     width: 1187.78px; 
     height: 1724.36px;
-    left: 316.73px; 
+    left: 341.73px; 
     top: 459.82px;              
   }
 
   .circle:nth-child(11) {
     width: 1117.38px; 
     height: 1622.15px; 
-    left: 351.94px; 
+    left: 376.94px; 
     top: 510.92px;                
   }
 
   .circle:nth-child(12) {
     width: 1047px; 
     height: 1519.98px; 
-    left: 387.13px; 
+    left: 412.13px; 
     top: 562.01px;                  
   }
 
   .circle:nth-child(13) {
     width: 976.62px; 
     height: 1417.80px; 
-    left: 422.32px; 
+    left: 447.32px; 
     top: 613.10px;                    
   }
 
   .circle:nth-child(14) {
     width: 906.24px; 
     height: 1315.62px; 
-    left: 457.51px; 
+    left: 482.51px; 
     top: 664.19px;                     
   }
 
   .circle:nth-child(15) {
     width: 835.84px; 
     height: 1213.42px; 
-    left: 492.71px; 
+    left: 517.71px; 
     top: 715.29px;                       
   }
 
   .circle:nth-child(16) {
     width: 765.45px; 
     height: 1111.24px; 
-    left: 527.90px; 
+    left: 552.90px; 
     top: 766.38px;                          
   }
 
   .circle:nth-child(17) {
     width: 695.07px; 
     height: 1009.07px;
-    left: 563.09px; 
+    left: 588.09px; 
     top: 817.47px;                             
   }
 
   .circle:nth-child(18) {
     width: 624.69px; 
     height: 906.89px;
-    left: 598.28px; 
+    left: 623.28px; 
     top: 868.55px;                               
   }
 
   .circle:nth-child(19) {
     width: 554.29px; 
     height: 804.69px; 
-    left: 633.48px; 
+    left: 658.48px; 
     top: 919.66px;                                 
   }
 
   .circle:nth-child(20) {
     width: 483.91px; 
     height: 702.51px; 
-    left: 668.67px; 
+    left: 693.67px; 
     top: 970.75px;                                   
   }
 
   .circle:nth-child(21) {
     width: 413.53px; 
     height: 600.33px; 
-    left: 703.86px; 
+    left: 728.86px; 
     top: 1021.83px;                                    
   }
 
   .circle:nth-child(22) {
     width: 343.15px; 
     height: 498.16px; 
-    left: 739.05px; 
+    left: 764.05px; 
     top: 1072.92px;                                      
   }
 
   .circle:nth-child(23) {
     width: 272.74px; 
     height: 395.95px; 
-    left: 774.26px;
+    left: 799.26px;
     top: 1124.02px;                                        
   }
 
   .circle:last-child {
     width: 202.36px;
     height: 293.78px;
-    left: 809.45px;
+    left: 834.45px;
     top: 1175.11px;
   }  
 
@@ -319,7 +319,7 @@
 .card-wrapper-1 {
     position: absolute;
     top: 80%; /* Adjust the top position as needed */
-    left: 18.5%; /* Adjust the left position as needed */
+    left: 19.8%; /* Adjust the left position as needed */
     transform: translate(-50%, -50%);
     width: 100%;
     max-width: 300px;
@@ -350,7 +350,7 @@
 .card-wrapper-2 {
     position: absolute;
     top: 45%; /* Adjust the top position as needed */
-    left: 13.5%; /* Adjust the left position as needed */
+    left: 14.5%; /* Adjust the left position as needed */
     transform: translate(-50%, -50%);
     width: 100%;
     max-width: 300px;
@@ -430,7 +430,7 @@
 .card-wrapper-4 {
     position: absolute;
     top: 80%; /* Adjust the top position as needed */
-    left: 81.6%; /* Adjust the left position as needed */
+    left: 83.6%; /* Adjust the left position as needed */
     transform: translate(-50%, -50%);
     width: 100%;
     max-width: 450px;
