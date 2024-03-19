@@ -17,31 +17,37 @@ const Results = () => {
 
   const handleButtonClick = async () => {
     const userConfirmed = window.confirm(
-      "Please confirm the validity of the results by entering the patient ID and selecting the result."
+      "Please confirm the validity of the diagnosis by entering the patient ID and diagnosis confirmation."
     );
-  
+
     if (userConfirmed) {
       const patientIdInput = prompt("Enter the patient ID:");
-      const resultConfirmation = prompt("Enter 'positive' or 'negative' to confirm the result:");
-  
+      const resultConfirmation = prompt(
+        "Enter 'positive' or 'negative' to confirm the diagnosis:"
+      );
+
       // Check if the entered patient ID matches the actual patient ID
       if (patientIdInput === patientDetails.PatientID) {
         try {
-          const response = await fetch(`/api/confirmDiagnosis?patient_id=${patientIdInput}&diagnosis=${resultConfirmation}`, {
-            method: "POST"
-          });
-  
+          const response = await fetch(
+            `/api/confirmDiagnosis?patient_id=${patientIdInput}&diagnosis=${resultConfirmation}`,
+            {
+              method: "POST",
+            }
+          );
+
           if (response.ok) {
-            console.log("Results confirmed successfully");
+            console.log("Diagnosis confirmed successfully");
             setShowText(false);
             await updateDoc(doc(db, "PatientList", patientID), {
               Status: "Diagnosed",
             });
           } else {
             const errorMessage = await response.text();
-            console.error("Error confirming results:", errorMessage);          }
+            console.error("Error confirming diagnosis:", errorMessage);
+          }
         } catch (error) {
-          console.error("Error confirming results:", error);
+          console.error("Error confirming diagnosis:", error);
         }
       } else {
         alert("Patient ID does not match. Please try again.");
@@ -111,10 +117,13 @@ const Results = () => {
     <section className="results-page">
       <div className="hero-result">
         <div className="top-nav">
-          <button className="homepage-home-button" onClick={() => navigate("/homepage")}>
-              <img src={homePageOneMindLogo} alt="Homepage" />
-              <p>OneMind</p>
-            </button>
+          <button
+            className="homepage-home-button"
+            onClick={() => navigate("/homepage")}
+          >
+            <img src={homePageOneMindLogo} alt="Homepage" />
+            <p>OneMind</p>
+          </button>
         </div>
 
         <div className="hero-content">
@@ -136,11 +145,15 @@ const Results = () => {
               <div className="results-details-top-row">
                 <div className="results-gender">
                   <p>Gender</p>
-                  <p className="patient-details-content">{patientDetails.Gender}</p>
+                  <p className="patient-details-content">
+                    {patientDetails.Gender}
+                  </p>
                 </div>
                 <div className="results-age">
                   <p>Age</p>
-                  <p className="patient-details-content">{patientDetails.Age}</p>
+                  <p className="patient-details-content">
+                    {patientDetails.Age}
+                  </p>
                 </div>
                 <div className="results-clinician">
                   <p>Clinician</p>
@@ -167,7 +180,7 @@ const Results = () => {
                       ? new Date(
                           patientDetails.Date.toMillis()
                         ).toLocaleDateString()
-              : ""}
+                      : ""}
                   </p>
                 </div>
               </div>
@@ -202,7 +215,7 @@ const Results = () => {
               <div className="before-confirming">
                 <img src={infoCircleIcon} alt="search Logo" />
 
-                <p>Please confirm the validity of the results by clicking</p>
+                <p>Please confirm the validity of the diagnosis by clicking</p>
                 <button
                   className="results-confirm-button"
                   onClick={handleButtonClick}
@@ -213,7 +226,7 @@ const Results = () => {
             ) : (
               <div className="after-confirming">
                 <img src={infoCircleBlueIcon} alt="search Logo" />
-                <p>Results has been confirmed</p>
+                <p>Diagnosis has been confirmed</p>
               </div>
             )}
           </div>
