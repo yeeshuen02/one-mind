@@ -14,7 +14,7 @@ const LoginForm = () => {
   const [email, setEmail] = useState("");
   const [pwd, setPwd] = useState("");
   const [errMsg, setErrMsg] = useState("");
-  const {logIn} = useAuth();
+  const { logIn } = useAuth();
 
   const navigate = useNavigate();
 
@@ -26,29 +26,29 @@ const LoginForm = () => {
     setErrMsg("");
   }, [email, pwd]);
 
-  const handleSubmit = async(e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     try {
-      const data = await logIn(email,pwd)
+      const data = await logIn(email, pwd);
       console.log("User succesffully logged in", data);
       console.log("Navigating to /homepage");
       navigate("/homepage");
     } catch (error) {
-        if (
-          error.code === "auth/user-not-found" ||
-          error.code === "auth/wrong-password"
-        ) {
-          setErrMsg("Login Failed. Please try again.");
-        } else if (error.code === "auth/invalid-email") {
-          setErrMsg("Login Failed. Please try again.");
-        } else if (error.code === "auth/too-many-requests") {
-          setErrMsg("Too Many Login Attempts. Try again later.");
-        } else {
-          setErrMsg("Login Failed. Please try again.");
-        }
+      if (
+        error.code === "auth/user-not-found" ||
+        error.code === "auth/wrong-password"
+      ) {
+        setErrMsg("Login Failed. Please try again.");
+      } else if (error.code === "auth/invalid-email") {
+        setErrMsg("Login Failed. Please try again.");
+      } else if (error.code === "auth/too-many-requests") {
+        setErrMsg("Too Many Login Attempts. Try again later.");
+      } else {
+        setErrMsg("Login Failed. Please try again.");
       }
-    };
+    }
+  };
 
   return (
     <div className="wrapper">
@@ -78,10 +78,6 @@ const LoginForm = () => {
             value={pwd}
             required
           />
-        </div>
-
-        <div className="forgot">
-          <a href="#">Forgot Password?</a>
         </div>
 
         <div
