@@ -3,6 +3,8 @@ import { useNavigate, useLocation } from "react-router-dom";
 import Homebuttondelete from "../../components/Homebuttondelete/Homebuttondelete";
 import "./Upload.css";
 import uploadLogo from "../../assets/Upload.png";
+import fileLogo from "../../assets/file-icon.png";
+
 import { updateDoc, doc } from "firebase/firestore";
 import { db } from "../../config/firebase";
 
@@ -114,7 +116,18 @@ const Upload = () => {
           <img src={uploadLogo} alt="Homepage" />
           <p>Drag & Drop</p>
           <p className="or-text">OR</p>
-          <label className="browse-file">
+          <label className="browse-file" htmlFor="edfFile">
+        Browse File
+        <input
+          type="file"
+          accept=".edf"
+          id="edfFile"
+          onChange={handleFileChange}
+          style={{ display: "none" }}
+        />
+      </label>
+     
+          {/* <label className="browse-file">
             {" "}
             Browse File
             <input
@@ -122,13 +135,20 @@ const Upload = () => {
               accept=".edf"
               id="edfFile"
               onChange={handleFileChange}
-              style={{ display: "none" }}
+              //style={{ display: "none" }}
             />
-          </label>
+          </label> */}
         </div>
         <div className="upload-right-side">
           <h1>Upload EEG Recordings</h1>
           <p>Select files from device</p>
+          {selectedFile && (
+        <div>
+          {/* <img src={fileLogo} alt="Homepage" /> */}
+
+          <p className="file-name">{selectedFile.name}</p>
+        </div>
+      )}
           <button onClick={handleUpload}>Upload &rarr;</button>
         </div>
       </div>
